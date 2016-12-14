@@ -1,0 +1,6 @@
+#define DECK_CARD_LENGTH 54
+#define PLAYER_CARD_LENGTH 7
+
+int deck[DECK_CARD_LENGTH];
+int player1Deck[PLAYER_CARD_LENGTH];
+int player2Deck[PLAYER_CARD_LENGTH];
