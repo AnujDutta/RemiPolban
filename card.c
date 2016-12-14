@@ -50,3 +50,13 @@ void shuffleCard(int card[]) {//Shuffle the deck
     swapCard(card, i, j);
   }
 }
+
+void trashCard(int card[], int n) {
+  trashDeck[0]=card[n];
+  card[n] = 0;
+}
+
+void getFromTrash(int card[]) {
+  card[8]=trashDeck[0];
+  trashDeck[0]=0;
+}
