@@ -23,4 +23,7 @@ void commands(playerControl *player, char command[], int a, int b) {
       strcpy(errorMessage, "Input Salah");
     }
   }
+  else if (strcmp(command, "sort")==0) {
+    sortDeck(player);
+  }
 }

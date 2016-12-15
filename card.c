@@ -75,3 +75,18 @@ void dealFromDeck(playerControl *player) {
     getFromDeck(player, i);
   }
 }
+
+void sortDeck(playerControl *player) {
+  int i, j, min;
+  for (i=0;i<player->cardLength-2;i++) {
+    min = i;
+    for(j=i+1;j<player->cardLength-1;j++) {
+      if (player->card[j]<player->card[min]) {
+        min = j;
+      }
+    }
+    if (min!=i) {
+      swapCard(player->card, i, min);
+    }
+  }
+}
