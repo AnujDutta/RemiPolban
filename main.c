@@ -4,25 +4,23 @@
 #include <windows.h>
 #include "setting.c"
 #include "card.c"
+#include "command.c"
 
 int main() {
   resetDeck();
   shuffleDeck();
   int i;
+  char command[100];
+  int a, b;
   emptyPlayerDeck(&player1);
   dealFromDeck(&player1);
-  printf("Player 1 Cards : \n");
-  for (i=0;i<player1.cardLength;i++) {
-      printf("%d%c ",getCardValue(player1.card[i]), getCardSymbol(player1.card[i]));
-  }
-
-  printf("\nDeck cards now : %d\n", deckLengthNow);
-  emptyPlayerDeck(&player2);
-  dealFromDeck(&player2);
-  printf("Player 2 Cards : \n");
-  for (i=0;i<player2.cardLength;i++) {
-      printf("%d%c ",getCardValue(player2.card[i]), getCardSymbol(player2.card[i]));
-  }
-  printf("\nDeck cards now : %d\n", deckLengthNow);
-
+  do {
+    printf("Player 1 Cards : \n");
+    for (i=0;i<player1.cardLength;i++) {
+        printf("%d%c ",getCardValue(player1.card[i]), getCardSymbol(player1.card[i]));
+    }
+    printf("\nEnter Command : ");
+    scanf("%s %d,%d", &command, &a, &b);
+    commands(&player1, command, a, b);
+  } while (TRUE);
 }
