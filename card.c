@@ -19,7 +19,12 @@ char getCardSymbol(int n) { //Return the card symbol
     case 53 ... 54 : return 'R'; break; //Joker
   }
 }
-
+void shiftLeft(playerControl *player, int x) {
+  int i;
+  for (i=x;i<player->cardLength;i++) {
+    player->card[i-1]=player->card[i];
+  }
+}
 void emptyPlayerDeck(playerControl *player) { //Empty the player deck
   int i;
   for (i=0;i<PLAYER_CARD_LENGTH;i++) {
@@ -48,6 +53,7 @@ void shuffleDeck() {//Shuffle the deck
 void trashCard(playerControl *player, int n) {
   trashDeck[0]=player->card[n];
   player->card[n] = 0;
+  shiftLeft(player, n+1);
   player->cardLength--;
 }
 
