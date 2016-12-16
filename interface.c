@@ -18,3 +18,33 @@ void update() {
   scanf("%s %d,%d", &command, &a, &b);
   commands(&player1, command, a, b);
 }
+
+void HowToPlay()
+{
+  printf("Syalalal");
+}
+
+void WelcomeScreen()
+{
+  int choose;
+
+  printf("WELCOME\n");
+  printf("\n1. Start\n");
+  printf("2. How To Play\n");
+  printf("3. Exit\n" );
+  printf("Choose the number of the menu: "); scanf("%d", &choose);
+
+  switch(choose)
+  {
+    case 1:
+    system("cls");
+    printf("Game Started\n");
+
+    case 2:
+    system("cls");
+    HowToPlay();
+
+    case 3:
+    system("exit");
+  }
+}

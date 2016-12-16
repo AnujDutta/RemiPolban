@@ -8,11 +8,12 @@
 #include "interface.c"
 
 int main() {
-  resetDeck();
-  shuffleDeck();
-  emptyPlayerDeck(&player1);
-  dealFromDeck(&player1);
-  do {
-    update();
-  } while (TRUE);
+  WelcomeScreen();
+  // resetDeck();
+  // shuffleDeck();
+  // emptyPlayerDeck(&player1);
+  // dealFromDeck(&player1);
+  // do {
+  //   update();
+  // } while (TRUE);
 }
