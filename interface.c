@@ -26,10 +26,7 @@ void HowToPlay()
 
 void StartGame() // pindahan dari main
 {
-  resetDeck();
-  shuffleDeck();
-  emptyPlayerDeck(&player1);
-  dealFromDeck(&player1);
+  gameInit();
   do {
     update();
   } while (TRUE);

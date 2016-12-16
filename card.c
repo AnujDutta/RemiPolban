@@ -90,3 +90,11 @@ void sortDeck(playerControl *player) {
     }
   }
 }
+
+void emptyMeldDeck(playerControl *player) {
+  int i;
+  for (i=0;i<PLAYER_CARD_LENGTH;i++) {
+    player->meldCard[i]=0;
+  }
+  player->meldCard = 0;
+}

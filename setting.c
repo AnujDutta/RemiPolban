@@ -24,6 +24,8 @@ int deck[DECK_CARD_LENGTH];
 
 typedef struct {
   int card[PLAYER_CARD_LENGTH];
+  int meldCard[PLAYER_CARD_LENGTH];
+  int meldLength = 0;
   int cardLength;
   int score;
 }playerControl;
