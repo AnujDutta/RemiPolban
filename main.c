@@ -7,13 +7,7 @@
 #include "command.c"
 #include "interface.c"
 
+
 int main() {
   WelcomeScreen();
-  // resetDeck();
-  // shuffleDeck();
-  // emptyPlayerDeck(&player1);
-  // dealFromDeck(&player1);
-  // do {
-  //   update();
-  // } while (TRUE);
 }

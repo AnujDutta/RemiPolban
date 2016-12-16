@@ -24,6 +24,17 @@ void HowToPlay()
   printf("Syalalal");
 }
 
+void StartGame() // pindahan dari main
+{
+  resetDeck();
+  shuffleDeck();
+  emptyPlayerDeck(&player1);
+  dealFromDeck(&player1);
+  do {
+    update();
+  } while (TRUE);
+}
+
 void WelcomeScreen()
 {
   int choose;
@@ -38,7 +49,7 @@ void WelcomeScreen()
   {
     case 1:
     system("cls");
-    printf("Game Started\n");
+    StartGame();
 
     case 2:
     system("cls");
