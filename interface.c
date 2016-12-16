@@ -32,27 +32,97 @@ void StartGame() // pindahan dari main
   } while (TRUE);
 }
 
-void WelcomeScreen()
+void menuDisplay(int i)
 {
-  int choose;
-
-  printf("WELCOME\n");
-  printf("\n1. Start\n");
-  printf("2. How To Play\n");
-  printf("3. Exit\n" );
-  printf("Choose the number of the menu: "); scanf("%d", &choose);
-
-  switch(choose)
-  {
-    case 1:
-    system("cls");
-    StartGame();
-
-    case 2:
-    system("cls");
-    HowToPlay();
-
-    case 3:
-    system("exit");
+  system("cls");
+  printf("\n");
+  printf("    ########   ########## ##      ##  #### ####    ########     #######   ##       ########      ####     ##     ##    \n");
+  printf("   ####   ###  ###    ##  ####  ####     ###       ###    ### ####   #### ###      ###    ###   ### ###  ####    ###   \n");
+  printf("   ###     ##  ###        ## #### ##     ###       ###    ### ###     ### ###      ###    ### ###    ### ######  ###   \n");
+  printf("   ###   ####  #######    ### ## ###     ###       ###    ### ###     ### ###      #########  ###    ### ###########   \n");
+  printf("   ########    ##         ### ## ###     ###       #########  ###     ### ###      ###    ### ########## ###  ######   \n");
+  printf("   ###  #####  ###    ##  ###    ###     ###       ###        ####   #### ######## ###    ### ###    ### ###    ####   \n");
+  printf("    ##    ###  ########## ##     ###  #### ####    ##           #######   ######## ########    ##     ##  ##     ##    \n");
+  printf("\n\n\n\n\n");
+  if((i+2)%3==0){
+    printf(BACK_BLU "                                           ####                                                                        \n" RESET);
+    printf(BACK_BLU "                                          ##   #  ##      ####   ####   ##                                             \n" RESET);
+    printf(BACK_BLU "                                            ##   ####   ###  ## ### ## ####                                            \n" RESET);
+    printf(BACK_BLU "                                         #   ##   ##  # ##   ## ##   #  ##  #                                          \n" RESET);
+    printf(BACK_BLU "                                          ####     ###   #### # ##       ###                                           \n" RESET);
   }
+  else {
+    printf("                                           ####                                                                        \n");
+    printf("                                          ##   #  ##      ####   ####   ##                                             \n");
+    printf("                                            ##   ####   ###  ## ### ## ####                                            \n");
+    printf("                                         #   ##   ##  # ##   ## ##   #  ##  #                                          \n");
+    printf("                                          ####     ###   #### # ##       ###                                           \n");
+  }
+  printf("\n");
+  if((i+1)%3==0) {
+    printf(BACK_BLU "                    #    #                                               #####                                         \n" RESET);
+    printf(BACK_BLU "                    ##  ##  ####  #     #          ##     ####          ##   ## ##    ####  #   #                      \n" RESET);
+    printf(BACK_BLU "                    ###### ##  ## ## # ##         ####   ##  ##         ##   ## ##  ###  ## ##  ##                     \n" RESET);
+    printf(BACK_BLU "                    ##  ## ##  ## ### ###          ##  # ##  ##         #####   ### ##   ##  #####                     \n" RESET);
+    printf(BACK_BLU "                    #    #  ####   #   #            ###   ####          ##      ###  #### #     ##                     \n" RESET);
+    printf(BACK_BLU "                                                                                               ##                      \n" RESET);
+  }
+  else {
+    printf("                    #    #                                               #####                                         \n");
+    printf("                    ##  ##  ####  #     #          ##     ####          ##   ## ##    ####  #   #                      \n");
+    printf("                    ###### ##  ## ## # ##         ####   ##  ##         ##   ## ##  ###  ## ##  ##                     \n");
+    printf("                    ##  ## ##  ## ### ###          ##  # ##  ##         #####   ### ##   ##  #####                     \n");
+    printf("                    #    #  ####   #   #            ###   ####          ##      ###  #### #     ##                     \n");
+    printf("                                                                                               ##                      \n");
+  }
+  printf("\n");
+  if(i%3==0) {
+    printf(BACK_BLU "                                               ######                                                                  \n" RESET);
+    printf(BACK_BLU "                                               ##             #   ##                                                   \n" RESET);
+    printf(BACK_BLU "                                               ####   ##  ## ### ####                                                  \n" RESET);
+    printf(BACK_BLU "                                               ##       ##    #   ##  #                                                \n" RESET);
+    printf(BACK_BLU "                                               ###### ##  ## ###   ###                                                 \n" RESET);
+  }
+  else {
+    printf("                                               ######                                                                  \n");
+    printf("                                               ##             #   ##                                                   \n");
+    printf("                                               ####   ##  ## ### ####                                                  \n");
+    printf("                                               ##       ##    #   ##  #                                                \n");
+    printf("                                               ###### ##  ## ###   ###                                                 \n");  
+  }
+  printf("\n\n");
 }
+
+void WelcomeScreen() {
+  int i=1;
+  char k;
+  system("mode 120,35");
+  do{
+    menuDisplay(i);
+    k=getch();
+    if(k==80)
+      i++;
+    else if(k==72)
+      i--;
+    if(k==13)
+      if((i+2)%3==0) {
+        system("cls");
+        StartGame();
+        break;
+      }
+      else {
+        if((i+1)%3==0) {
+          system("cls");
+          HowToPlay();
+          break;
+        }
+        else {
+          if(i%3==0){
+            system("cls");
+            break;
+          }
+        }
+      }
+  } while(TRUE);
+}
+
