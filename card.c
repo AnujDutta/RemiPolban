@@ -96,5 +96,5 @@ void emptyMeldDeck(playerControl *player) {
   for (i=0;i<PLAYER_CARD_LENGTH;i++) {
     player->meldCard[i]=0;
   }
-  player->meldCard = 0;
+  player->meldLength = 0;
 }

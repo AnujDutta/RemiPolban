@@ -5,6 +5,7 @@
 #include "setting.c"
 #include "card.c"
 #include "command.c"
+#include "gameManager.c"
 #include "interface.c"
 
 
