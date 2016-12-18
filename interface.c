@@ -34,63 +34,42 @@ void StartGame() // pindahan dari main
 
 void menuDisplay(int i)
 {
+  int line;
   system("cls");
+  FILE *fp;
+  char buff[125];
+  fp=fopen("menuDisplay.txt","r");
   printf("\n");
-  printf("    ########   ########## ##      ##  #### ####    ########     #######   ##       ########      ####     ##     ##    \n");
-  printf("   ####   ###  ###    ##  ####  ####     ###       ###    ### ####   #### ###      ###    ###   ### ###  ####    ###   \n");
-  printf("   ###     ##  ###        ## #### ##     ###       ###    ### ###     ### ###      ###    ### ###    ### ######  ###   \n");
-  printf("   ###   ####  #######    ### ## ###     ###       ###    ### ###     ### ###      #########  ###    ### ###########   \n");
-  printf("   ########    ##         ### ## ###     ###       #########  ###     ### ###      ###    ### ########## ###  ######   \n");
-  printf("   ###  #####  ###    ##  ###    ###     ###       ###        ####   #### ######## ###    ### ###    ### ###    ####   \n");
-  printf("    ##    ###  ########## ##     ###  #### ####    ##           #######   ######## ########    ##     ##  ##     ##    \n");
+  for(line=1;line<=7;line++) {
+    fgets(buff,125,(FILE*)fp);
+    printf("%s", buff);
+  }
   printf("\n\n\n\n\n");
-  if((i+2)%3==0){
-    printf(BACK_BLU "                                           ####                                                                        \n" RESET);
-    printf(BACK_BLU "                                          ##   #  ##      ####   ####   ##                                             \n" RESET);
-    printf(BACK_BLU "                                            ##   ####   ###  ## ### ## ####                                            \n" RESET);
-    printf(BACK_BLU "                                         #   ##   ##  # ##   ## ##   #  ##  #                                          \n" RESET);
-    printf(BACK_BLU "                                          ####     ###   #### # ##       ###                                           \n" RESET);
-  }
-  else {
-    printf("                                           ####                                                                        \n");
-    printf("                                          ##   #  ##      ####   ####   ##                                             \n");
-    printf("                                            ##   ####   ###  ## ### ## ####                                            \n");
-    printf("                                         #   ##   ##  # ##   ## ##   #  ##  #                                          \n");
-    printf("                                          ####     ###   #### # ##       ###                                           \n");
+  for(line=8;line<=12;line++) {
+    fgets(buff,125,(FILE*)fp);
+    if((i+2)%3==0)
+      printf(BACK_BLU "%s" RESET, buff);
+    else
+      printf("%s", buff);
   }
   printf("\n");
-  if((i+1)%3==0) {
-    printf(BACK_BLU "                    #    #                                               #####                                         \n" RESET);
-    printf(BACK_BLU "                    ##  ##  ####  #     #          ##     ####          ##   ## ##    ####  #   #                      \n" RESET);
-    printf(BACK_BLU "                    ###### ##  ## ## # ##         ####   ##  ##         ##   ## ##  ###  ## ##  ##                     \n" RESET);
-    printf(BACK_BLU "                    ##  ## ##  ## ### ###          ##  # ##  ##         #####   ### ##   ##  #####                     \n" RESET);
-    printf(BACK_BLU "                    #    #  ####   #   #            ###   ####          ##      ###  #### #     ##                     \n" RESET);
-    printf(BACK_BLU "                                                                                               ##                      \n" RESET);
-  }
-  else {
-    printf("                    #    #                                               #####                                         \n");
-    printf("                    ##  ##  ####  #     #          ##     ####          ##   ## ##    ####  #   #                      \n");
-    printf("                    ###### ##  ## ## # ##         ####   ##  ##         ##   ## ##  ###  ## ##  ##                     \n");
-    printf("                    ##  ## ##  ## ### ###          ##  # ##  ##         #####   ### ##   ##  #####                     \n");
-    printf("                    #    #  ####   #   #            ###   ####          ##      ###  #### #     ##                     \n");
-    printf("                                                                                               ##                      \n");
+  for(line=13;line<=18;line++) {
+    fgets(buff,125,(FILE*)fp);
+    if((i+1)%3==0)
+      printf(BACK_BLU "%s" RESET, buff);
+    else
+      printf("%s", buff);
   }
   printf("\n");
-  if(i%3==0) {
-    printf(BACK_BLU "                                               ######                                                                  \n" RESET);
-    printf(BACK_BLU "                                               ##             #   ##                                                   \n" RESET);
-    printf(BACK_BLU "                                               ####   ##  ## ### ####                                                  \n" RESET);
-    printf(BACK_BLU "                                               ##       ##    #   ##  #                                                \n" RESET);
-    printf(BACK_BLU "                                               ###### ##  ## ###   ###                                                 \n" RESET);
-  }
-  else {
-    printf("                                               ######                                                                  \n");
-    printf("                                               ##             #   ##                                                   \n");
-    printf("                                               ####   ##  ## ### ####                                                  \n");
-    printf("                                               ##       ##    #   ##  #                                                \n");
-    printf("                                               ###### ##  ## ###   ###                                                 \n");  
+  for(line=19;line<=23;line++) {
+    fgets(buff,125,(FILE*)fp);
+    if(i%3==0)
+      printf(BACK_BLU "%s" RESET, buff);
+    else
+      printf("%s", buff);
   }
   printf("\n\n");
+  fclose(fp);
 }
 
 void WelcomeScreen() {
