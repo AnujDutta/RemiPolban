@@ -1,3 +1,7 @@
+#define SPADE '\x06'
+#define CLUB '\x05'
+#define HEART '\x03'
+#define DIAMOND '\x04'
 #define FORE_BLC "\x1B[30m"
 #define FORE_RED "\x1B[31m"
 #define FORE_GRN "\x1B[32m"
