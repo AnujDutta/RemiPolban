@@ -1,3 +1,13 @@
+void update();
+
+void HowToPlay();
+
+void StartGame();
+
+void menuDisplay(int i);
+
+void WelcomeScreen();
+
 void update() {
   char command[100];
   int a, b;
@@ -104,4 +114,3 @@ void WelcomeScreen() {
       }
   } while(TRUE);
 }
-
