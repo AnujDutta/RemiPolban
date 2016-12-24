@@ -7,6 +7,7 @@ int deckLengthNow = 54;
 int deck[DECK_CARD_LENGTH];
 
 typedef struct {
+  char playerName[100];
   int card[PLAYER_CARD_LENGTH];
   int meldCard[PLAYER_CARD_LENGTH];
   int meldLength;
