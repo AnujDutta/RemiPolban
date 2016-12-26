@@ -1,7 +1,9 @@
-void commands(playerControl *player, char command[], int a, int b) {
+void commands(playerControl *player, char command[]) {
+  int paramA, paramB;
   if (strcmp(command, "swap")==0) {
-    if (a<=player->cardLength && b<=player->cardLength && a>0 && b>0) {
-      swapCard(player->card, a-1, b-1);
+    scanf("%d,%d", &paramA, &paramB);
+    if (paramA<=player->cardLength && paramB<=player->cardLength && paramA>0 && paramB>0) {
+      swapCard(player->card, paramA-1, paramB-1);
     }
     else {
       strcpy(errorMessage, "Input Salah");
@@ -16,8 +18,9 @@ void commands(playerControl *player, char command[], int a, int b) {
     }
   }
   else if (strcmp(command, "trash")==0) {
-    if (a<=player->cardLength  && a>0) {
-      trashCard(player, a-1);
+    scanf("%d",&paramA);
+    if (paramA<=player->cardLength  && paramA>0) {
+      trashCard(player, paramA-1);
     }
     else {
       strcpy(errorMessage, "Input Salah");
@@ -25,5 +28,14 @@ void commands(playerControl *player, char command[], int a, int b) {
   }
   else if (strcmp(command, "sort")==0) {
     sortDeck(player);
+  }
+  else if (strcmp(command, "meld")==0) {
+    scanf("%d", &paramA);
+    if (paramA<=player->cardLength  && paramA>0) {
+      insertMeldCard(player, paramA-1);
+    }
+    else {
+      strcpy(errorMessage, "Input Salah");
+    }
   }
 }

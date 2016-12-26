@@ -24,6 +24,8 @@ void sortDeck(playerControl *player);
 
 void emptyMeldDeck(playerControl *player);
 
+void insertMeldCard(playerControl *player, int card);
+
 void resetDeck() { //Reset deck
   int i;
   deckLengthNow=54;
@@ -123,4 +125,11 @@ void emptyMeldDeck(playerControl *player) {
     player->meldCard[i]=0;
   }
   player->meldLength = 0;
+}
+
+void insertMeldCard(playerControl *player, int card) {
+  player->meldCard[player->meldLength]=player->card[card];
+  shiftLeft(player, card+1);
+  player->meldLength++;
+  player->cardLength--;
 }

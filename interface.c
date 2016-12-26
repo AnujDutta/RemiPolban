@@ -12,20 +12,23 @@ void printPlayerCard(playerControl *player);
 
 void printErrorMessage();
 
+void printMeldCard(playerControl *player);
+
 void update() {
   char command[100];
-  int a, b;
   int i;
   system("cls");
   printErrorMessage();
   printf("Jumlah Kartu di Deck : %d\n",deckLengthNow);
   printf("Trash Cards : \n");
   printf("%d%c ",getCardValue(trashDeck[0]), getCardSymbol(trashDeck[0]));
-  printf("\n%s : \n", player1.playerName);
+  printf("\nPlayer 1 Meld Card : \n");
+  printMeldCard(&player1);
+  printf("\nPlayer 1 Card : \n");
   printPlayerCard(&player1);
   printf("\nEnter Command : ");
-  scanf("%s %d,%d", &command, &a, &b);
-  commands(&player1, command, a, b);
+  scanf("%s", &command);
+  commands(&player1, command);
 }
 
 void HowToPlay()
@@ -125,5 +128,12 @@ void printErrorMessage() {
   if(strcmp(errorMessage, "")!=0) {
     puts(errorMessage);
     strcpy(errorMessage, "");
+  }
+}
+
+void printMeldCard(playerControl *player) {
+  int i;
+  for (i=0;i<player->meldLength;i++) {
+    printf("%d%c ",getCardValue(player->meldCard[i]), getCardSymbol(player->meldCard[i]));
   }
 }
