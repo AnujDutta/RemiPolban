@@ -1,3 +1,5 @@
+void help();
+
 void commands(playerControl *player, char command[]) {
   int paramA, paramB;
   char cParamA[100];
@@ -60,7 +62,26 @@ void commands(playerControl *player, char command[]) {
       strcpy(errorMessage, "Akses ditolak");
     }
   }
+  else if (strcmp(command, "help")==0)
+  {
+    help();
+  }
   else {
     strcpy(errorMessage, "Perintah tidak ditemukan");
   }
+}
+
+void help()
+{
+  system("cls");
+  printf("Command Dalam Game\n\n"
+
+    "Swap\t		Menukar kartu yang di tangan --> swap(*posisi kartu 1,*posisi kartu 2)\n"
+    "Deal\t		Untuk mengambil kartu dari deck\n"
+    "Trash\t		Untuk membuang kartu --> trash(*posisi kartu)\n"
+    "Sort\t		Mengurutkan kartu yang ada di tangan \n"
+    "Meld\t\t	Menyatukan kartu yang sudah jadi --> meld(*posisi kartu)\n"
+    "God_mode\t	Cari saja sendiri apa fungsinya hehehe\n"
+    );
+  system("pause");
 }

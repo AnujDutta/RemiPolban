@@ -14,6 +14,8 @@ void printErrorMessage();
 
 void printMeldCard(playerControl *player);
 
+
+
 void update() {
   char command[100];
   int i;
