@@ -1,4 +1,16 @@
+void gameInit();
+void roundInit();
+void resetPlayerScore(playerControl *player);
+void setPlayerScore(playerControl *player, int x);
+
 void gameInit() {
+  resetPlayerScore(&player1);
+  resetPlayerScore(&player2);
+
+  roundInit();
+}
+
+void roundInit() {
   resetDeck();
   shuffleDeck();
 
@@ -11,7 +23,13 @@ void gameInit() {
   dealFromDeck(&player2);
 }
 
+void resetPlayerScore(playerControl *player) {
+  player->score = 0;
+}
 
+void setPlayerScore(playerControl *player, int x) {
+  player->score = x;
+}
 // int sequenceCheck(playerControl *player) {
 //   int i=0;
 //   int j=0;

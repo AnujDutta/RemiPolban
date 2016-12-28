@@ -19,13 +19,19 @@ void update() {
   int i;
   system("cls");
   printErrorMessage();
+  printf("Player 1 Score : %d\n", player1.score);
+  printf("Player 2 Score : %d\n", player2.score);
   printf("Jumlah Kartu di Deck : %d\n",deckLengthNow);
+
   printf("Trash Cards : \n");
   printf("%d%c ",getCardValue(trashDeck[0]), getCardSymbol(trashDeck[0]));
+
   printf("\nPlayer 1 Meld Card : \n");
   printMeldCard(&player1);
+
   printf("\nPlayer 1 Card : \n");
   printPlayerCard(&player1);
+
   printf("\nEnter Command : ");
   scanf("%s", &command);
   commands(&player1, command);
@@ -41,7 +47,7 @@ void StartGame() // pindahan dari main
   gameInit();
   do {
     update();
-  } while (TRUE);
+  } while (player1.score < WIN_SCORE && player2.score < WIN_SCORE);
 }
 
 void menuDisplay(int i)

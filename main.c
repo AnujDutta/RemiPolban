@@ -5,8 +5,8 @@
 #include "config/setting.c"
 #include "config/characterSpecial.c"
 #include "card.c"
-#include "command.c"
 #include "gameManager.c"
+#include "command.c"
 #include "interface.c"
 
 
