@@ -12,6 +12,7 @@ typedef struct {
   int card[PLAYER_CARD_LENGTH];
   int meldCard[PLAYER_CARD_LENGTH];
   int meldLength;
+  int melded;
   int cardLength;
   int score;
 }playerControl;

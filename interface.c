@@ -46,7 +46,9 @@ void StartGame() // pindahan dari main
 {
   gameInit();
   do {
-    update();
+    do {
+      update();
+    } while (deckLengthNow!=0 || player1.melded<2 || player2.melded<2);
   } while (player1.score < WIN_SCORE && player2.score < WIN_SCORE);
 }
 

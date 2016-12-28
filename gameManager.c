@@ -1,11 +1,10 @@
 void gameInit();
 void roundInit();
-void resetPlayerScore(playerControl *player);
 void setPlayerScore(playerControl *player, int x);
 
 void gameInit() {
-  resetPlayerScore(&player1);
-  resetPlayerScore(&player2);
+  setPlayerScore(&player1, 0);
+  setPlayerScore(&player2, 0);
 
   roundInit();
 }
@@ -17,14 +16,12 @@ void roundInit() {
   emptyPlayerDeck(&player1);
   emptyMeldDeck(&player1);
   dealFromDeck(&player1);
+  player1.melded = 0;
 
   emptyPlayerDeck(&player2);
   emptyMeldDeck(&player2);
   dealFromDeck(&player2);
-}
-
-void resetPlayerScore(playerControl *player) {
-  player->score = 0;
+  player2.melded = 0;
 }
 
 void setPlayerScore(playerControl *player, int x) {
