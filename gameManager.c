@@ -27,19 +27,27 @@ void roundInit() {
 void setPlayerScore(playerControl *player, int x) {
   player->score = x;
 }
-// int sequenceCheck(playerControl *player) {
-//   int i=0;
-//   int j=0;
-//   player->meldCard[j]=player->card[i];
-//   player->meldLength++;
-//   while(player->card[i+1]-player->card[i]==0 && getCardSymbol(player->card[i+1]) == getCardSymbol(player->card[i])) {
-//     j++;
-//     player->meldCard[j]=player->card[i+1];
-//     player->meldLength++;
-//     i++;
-//   }
-//   if (meldLength>=3) {
-//     printf("Bisa");
-//   }
-//   else {}
-// }
+
+int groupCheck(playerControl *player) {
+  int i=0, status;
+  status = 1;
+  while(i<player->meldLength-1 && status) {
+    if (getCardValue(player->meldCard[i]) != getCardValue(player->meldCard[i+1])) {
+      status=0;
+    }
+    i++;
+  }
+  return status;
+}
+
+int sequenceCheck(playerControl *player) {
+  int status;
+  status = 0;
+  sortDeckBySymbol(player->meldCard, player->meldLength);
+  if (getCardSymbol(player->meldCard[0])==getCardSymbol(player->meldCard[player->meldLength-1])) { //Sama simbol
+    if (getCardValue(player->meldCard[player->meldLength-1])-getCardValue(player->meldCard[0])+1 == player->meldLength) { //Berurutan
+      status = 1;
+    }
+  }
+  return status;
+}

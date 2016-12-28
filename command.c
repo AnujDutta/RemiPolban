@@ -29,8 +29,8 @@ void commands(playerControl *player, char command[]) {
       strcpy(errorMessage, "Input Salah");
     }
   }
-  else if (strcmp(command, "sort")==0) {
-    sortDeck(player);
+  else if (strcmp(command, "sort_symbol")==0) {
+    sortDeckBySymbol(player->card, player->cardLength);
   }
   else if (strcmp(command, "meld")==0) {
     scanf("%d", &paramA);
@@ -39,6 +39,16 @@ void commands(playerControl *player, char command[]) {
     }
     else {
       strcpy(errorMessage, "Input Salah");
+    }
+  }
+  else if (strcmp(command, "polban")==0) {
+    if (player->meldLength>=3) {
+      if (sequenceCheck(player) || groupCheck(player)) {
+        strcpy(errorMessage, "MENANG!!!!!");
+      }
+    }
+    else {
+      strcpy(errorMessage, "Jumlah kartu tidak memennuhi");
     }
   }
   else if (strcmp(command, "god_mode")==0) {

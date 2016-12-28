@@ -20,7 +20,7 @@ void getFromDeck(playerControl *player, int i);
 
 void dealFromDeck(playerControl *player);
 
-void sortDeck(playerControl *player);
+void sortDeckBySymbol(int card[], int cardLength);
 
 void emptyMeldDeck(playerControl *player);
 
@@ -104,17 +104,17 @@ void dealFromDeck(playerControl *player) {
   }
 }
 
-void sortDeck(playerControl *player) {
+void sortDeckBySymbol(int card[], int cardLength) {
   int i, j, min;
-  for (i=0;i<player->cardLength-2;i++) {
+  for (i=0;i<cardLength-1;i++) {
     min = i;
-    for(j=i+1;j<player->cardLength-1;j++) {
-      if (player->card[j]<player->card[min]) {
+    for(j=i+1;j<cardLength;j++) {
+      if (card[j]<card[min]) {
         min = j;
       }
     }
     if (min!=i) {
-      swapCard(player->card, i, min);
+      swapCard(card, i, min);
     }
   }
 }

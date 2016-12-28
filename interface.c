@@ -50,8 +50,12 @@ void StartGame() // pindahan dari main
   do {
     do {
       update();
-    } while (deckLengthNow!=0 || player1.melded<2 || player2.melded<2);
+    } while (deckLengthNow!=0 && player1.melded<2 && player2.melded<2);
+    printf("Round End\n");
+    system("pause");
+    roundInit();
   } while (player1.score < WIN_SCORE && player2.score < WIN_SCORE);
+  printf("Game End\n");
 }
 
 void menuDisplay(int i)

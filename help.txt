@@ -1,8 +1,8 @@
 Command Dalam Game
 
-Swap		Menukar kartu yang di tangan --> swap(*posisi kartu 1,*posisi kartu 2)
-Deal		Untuk mengambil kartu dari deck
-Trash		Untuk membuang kartu --> trash(*posisi kartu)
-Sort 		Mengurutkan kartu yang ada di tangan 
-Meld		Menyatukan kartu yang sudah jadi --> meld(*posisi kartu)
-God_mode	Cari saja sendiri apa fungsinya hehehe
+swap		Menukar kartu yang di tangan --> swap(*posisi kartu 1,*posisi kartu 2)
+deal		Untuk mengambil kartu dari deck
+trash		Untuk membuang kartu --> trash(*posisi kartu)
+sort_symbol 		Mengurutkan kartu yang ada di tangan
+meld		Menyatukan kartu yang sudah jadi --> meld(*posisi kartu)
+god_mode	Cari saja sendiri apa fungsinya hehehe
