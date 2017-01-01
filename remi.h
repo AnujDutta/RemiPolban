@@ -1,5 +1,7 @@
-//file card.c
+#ifndef REMI_H
+#define REMI_H
 
+//file card.c
 void resetDeck(); //Reset deck
 
 int getCardValue(int n); //Return the card number
@@ -28,9 +30,7 @@ void emptyMeldDeck(playerControl *player);
 
 void insertMeldCard(playerControl *player, int card);
 
-//----------------------------------------------
 //file interface.c
-
 void update();
 
 void HowToPlay();
@@ -46,3 +46,5 @@ void printPlayerCard(playerControl *player);
 void printErrorMessage();
 
 void printMeldCard(playerControl *player);
+
+#endif

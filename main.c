@@ -4,6 +4,7 @@
 #include <windows.h>
 #include "config/setting.c"
 #include "config/characterSpecial.c"
+#include "remi.h"
 #include "card.c"
 #include "gameManager.c"
 #include "command.c"

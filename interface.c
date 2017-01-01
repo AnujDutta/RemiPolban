@@ -1,21 +1,3 @@
-void update();
-
-void HowToPlay();
-
-void StartGame();
-
-void menuDisplay(int i);
-
-void WelcomeScreen();
-
-void printPlayerCard(playerControl *player);
-
-void printErrorMessage();
-
-void printMeldCard(playerControl *player);
-
-
-
 void update() {
   char command[100];
   int i;
