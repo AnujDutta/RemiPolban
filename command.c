@@ -32,6 +32,9 @@ void commands(playerControl *player, char command[]) {
   else if (strcmp(command, "sort_symbol")==0) {
     sortDeckBySymbol(player->card, player->cardLength);
   }
+  else if (strcmp(command, "sort_number")==0) {
+    sortDeckByNumber(player->card, player->cardLength);
+  }
   else if (strcmp(command, "meld")==0) {
     scanf("%d", &paramA);
     if (paramA<=player->cardLength  && paramA>0) {

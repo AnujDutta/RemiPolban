@@ -91,6 +91,21 @@ void sortDeckBySymbol(int card[], int cardLength) {
   }
 }
 
+void sortDeckByNumber(int card[], int cardLength) {
+  int i, j, min;
+  for (i=0;i<cardLength-1;i++) {
+    min = i;
+    for(j=i+1;j<cardLength;j++) {
+      if (getCardValue(card[j])<getCardValue(card[min])) {
+        min = j;
+      }
+    }
+    if (min!=i) {
+      swapCard(card, i, min);
+    }
+  }
+}
+
 void emptyMeldDeck(playerControl *player) {
   int i;
   for (i=0;i<PLAYER_CARD_LENGTH;i++) {
