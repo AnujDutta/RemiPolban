@@ -122,3 +122,9 @@ void insertMeldCard(playerControl *player, int card) {
   player->meldLength++;
   player->cardLength--;
 }
+
+void getFromMeld(playerControl *player, int i) {
+  player->card[player->cardLength]=player->meldCard[i];
+  player->meldLength--;
+  player->cardLength++;
+}

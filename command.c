@@ -28,6 +28,15 @@ void commands(playerControl *player, char command[]) {
       strcpy(errorMessage, "Deck sudah Penuh atau Trash kosong");
     }
   }
+  else if (strcmp(command, "take_meld")==0) {
+    scanf("%d",&paramA);
+    if (player->cardLength<PLAYER_CARD_LENGTH && player->meldLength>(paramA-1)) {
+      getFromMeld(player, paramA-1);
+    }
+    else {
+      strcpy(errorMessage, "Deck sudah Penuh atau Meld Kosong");
+    }
+  }
   else if (strcmp(command, "trash")==0) {
     scanf("%d",&paramA);
     if (paramA<=player->cardLength  && paramA>0) {
@@ -54,8 +63,11 @@ void commands(playerControl *player, char command[]) {
   }
   else if (strcmp(command, "polban")==0) {
     if (player->meldLength>=3) {
-      if (sequenceCheck(player) || groupCheck(player)) {
-        strcpy(errorMessage, "MENANG!!!!!");
+      if (sequenceCheck(player)) {
+        strcpy(errorMessage, "Sequence");
+      }
+      else if (groupCheck(player)) {
+        strcpy(errorMessage, "Group");
       }
     }
     else {
@@ -86,6 +98,14 @@ void commands(playerControl *player, char command[]) {
   else if (strcmp(command, "help")==0)
   {
     help();
+  }
+  else if (strcmp(command, "reset_game")==0)
+  {
+    gameInit();
+  }
+  else if (strcmp(command, "reset_round")==0)
+  {
+    roundInit();
   }
   else {
     strcpy(errorMessage, "Perintah tidak ditemukan");

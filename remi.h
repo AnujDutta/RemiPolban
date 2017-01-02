@@ -30,6 +30,8 @@ void emptyMeldDeck(playerControl *player);
 
 void insertMeldCard(playerControl *player, int card);
 
+void getFromMeld(playerControl *player, int i);
+
 //file interface.c
 void update();
 
