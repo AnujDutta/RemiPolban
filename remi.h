@@ -20,7 +20,7 @@ void trashCard(playerControl *player, int n);
 
 void getFromTrash(playerControl *player);
 
-void getFromDeck(playerControl *player, int i);
+void getFromDeck(playerControl *player);
 
 void dealFromDeck(playerControl *player);
 
@@ -46,5 +46,7 @@ void printPlayerCard(playerControl *player);
 void printErrorMessage();
 
 void printMeldCard(playerControl *player);
+
+void printTrashCard();
 
 #endif

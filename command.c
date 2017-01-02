@@ -12,12 +12,20 @@ void commands(playerControl *player, char command[]) {
       strcpy(errorMessage, "Input Salah");
     }
   }
-  else if (strcmp(command, "deal")==0) {
+  else if (strcmp(command, "take_deck")==0) {
     if (player->cardLength<PLAYER_CARD_LENGTH) {
-      getFromDeck(player, player->cardLength);
+      getFromDeck(player);
     }
     else {
       strcpy(errorMessage, "Deck sudah Penuh");
+    }
+  }
+  else if (strcmp(command, "take_trash")==0) {
+    if (player->cardLength<PLAYER_CARD_LENGTH && trashLengthNow!=0) {
+      getFromTrash(player);
+    }
+    else {
+      strcpy(errorMessage, "Deck sudah Penuh atau Trash kosong");
     }
   }
   else if (strcmp(command, "trash")==0) {

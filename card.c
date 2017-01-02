@@ -55,16 +55,18 @@ void trashCard(playerControl *player, int n) {
   player->card[n] = 0;
   shiftLeft(player, n+1);
   player->cardLength--;
+  trashLengthNow++;
 }
 
 void getFromTrash(playerControl *player) {
-  player->card[8]=trashDeck[0];
+  player->card[player->cardLength]=trashDeck[0];
   trashDeck[0]=0;
   player->cardLength+=1;
+  trashLengthNow--;
 }
 
-void getFromDeck(playerControl *player, int i) {
-  player->card[i]=deck[deckLengthNow-1];
+void getFromDeck(playerControl *player) {
+  player->card[player->cardLength]=deck[deckLengthNow-1];
   deckLengthNow--;
   player->cardLength++;
 }
@@ -72,7 +74,7 @@ void getFromDeck(playerControl *player, int i) {
 void dealFromDeck(playerControl *player) {
   int i;
   for (i=0;i<PLAYER_CARD_LENGTH-1;i++) {
-    getFromDeck(player, i);
+    getFromDeck(player);
   }
 }
 

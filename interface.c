@@ -8,7 +8,7 @@ void update() {
   printf("Jumlah Kartu di Deck : %d\n",deckLengthNow);
 
   printf("Trash Cards : \n");
-  printf("%d%c ",getCardValue(trashDeck[0]), getCardSymbol(trashDeck[0]));
+  printTrashCard();
 
   printf("\nPlayer 1 Meld Card : \n");
   printMeldCard(&player1);
@@ -129,6 +129,11 @@ void printMeldCard(playerControl *player) {
   }
 }
 
+void printTrashCard() {
+  if (trashLengthNow!=0) {
+    printf("%d%c ",getCardValue(trashDeck[0]), getCardSymbol(trashDeck[0]));
+  }
+}
 void HowToPlay()
 {
   char back_main;

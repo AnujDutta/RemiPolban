@@ -4,6 +4,7 @@
 #define WIN_SCORE 1000
 
 int deckLengthNow = 54;
+int trashLengthNow = 0;
 int deck[DECK_CARD_LENGTH];
 int godMode = 0;
 
