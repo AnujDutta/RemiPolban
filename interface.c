@@ -15,7 +15,7 @@ void update() {
 
   printf("\nPlayer 1 Card : \n");
   printPlayerCard(&player1);
-  
+
   printf("\nEnter Command : ");
   scanf("%s", &command);
   commands(&player1, command);
@@ -100,7 +100,8 @@ void WelcomeScreen() {
         }
         else {
           if(i%3==0){
-            system("cls");
+            fflush(stdin);
+            system("exit");
             break;
           }
         }

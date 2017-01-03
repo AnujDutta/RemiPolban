@@ -10,6 +10,7 @@
 #include "command.c"
 #include "interface.c"
 #include "ai.c"
+#include "score.c"
 
 
 int main() {

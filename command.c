@@ -111,6 +111,11 @@ void commands(playerControl *player, char command[]) {
   {
     WelcomeScreen();
   }
+  else if (strcmp(command, "score")==0)
+  {
+    printf("Score anda: %d\n",score(player));
+    system("pause");
+  }
   else {
     strcpy(errorMessage, "Perintah tidak ditemukan");
   }
