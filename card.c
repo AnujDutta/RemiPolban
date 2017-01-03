@@ -118,7 +118,7 @@ void emptyMeldDeck(playerControl *player) {
 
 void insertMeldCard(playerControl *player, int card) {
   player->meldCard[player->meldLength]=player->card[card];
-  shiftLeft(player, card+1);
+  shiftLeft(player->card, player->cardLength, card+1);
   player->meldLength++;
   player->cardLength--;
 }
@@ -126,7 +126,7 @@ void insertMeldCard(playerControl *player, int card) {
 void getFromMeld(playerControl *player, int i) {
   player->card[player->cardLength]=player->meldCard[i];
   player->meldCard[i]=0;
-  shiftLeft(player, i+1);
+  shiftLeft(player->meldCard, player->meldLength, i+1);
   player->meldLength--;
   player->cardLength++;
 }

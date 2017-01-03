@@ -32,7 +32,7 @@ int groupCheck(int card[], int length) {
   int i=0, status;
   status = 1;
   while(i<length-1 && status) {
-    if (getCardValue(player->card[i]) != getCardValue(card[i+1])) {
+    if (getCardValue(card[i]) != getCardValue(card[i+1])) {
       status=0;
     }
     i++;
