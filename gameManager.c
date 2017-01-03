@@ -43,7 +43,6 @@ int groupCheck(int card[], int length) {
 int sequenceCheck(int card[], int length) {
   int status;
   status = 0;
-  sortDeckBySymbol(card, length);
   if (getCardSymbol(card[0])==getCardSymbol(card[length-1])) { //Sama simbol
     if (getCardValue(card[length-1])-getCardValue(card[0])+1 == length) { //Berurutan
       status = 1;

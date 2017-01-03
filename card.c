@@ -130,3 +130,8 @@ void getFromMeld(playerControl *player, int i) {
   player->meldLength--;
   player->cardLength++;
 }
+
+void getCard(playerControl *player, int x) {
+  player->card[player->cardLength]=x;
+  player->cardLength++;
+}

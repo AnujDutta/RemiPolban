@@ -19,29 +19,56 @@ void printAICard(int tempBrain[], int length) {
 }
 
 int searchSymbol(int tempBrain[], int length) {
-  int ketemu, i;
+  int tempMeld[4];
+  int ketemu, i, x, y;
   ketemu = 0;
   i=0;
-  sortDeckBySymbol(tempBrain, length);
-  while (i<length && !ketemu) {
-    // for(i=0;i<3)
+  sortDeckByNumber(tempBrain, length);
+  while (i<length-2 && !ketemu) {
+    if (i+4<=length) {
+      y=4;
+    }
+    else {
+      y=3;
+    }
+    while(y>=3) {
+      for(x=0;x<4;x++) {
+        tempMeld[x]=tempBrain[i+x];
+      }
+      ketemu = groupCheck(tempMeld, y);
+      if (ketemu) {
+        ketemu = i*10+y;
+        break;
+      }
+      y--;
+    }
+    i++;
   }
+  return ketemu;
 }
 
 void startAI(playerControl *player) {
   int tempBrain[PLAYER_CARD_LENGTH];
   int length;
-  if (trashLengthNow==0) {
-    getFromDeck(player);
-  }
-  else {
-    emptyTempBrain(tempBrain);
-    copyPlayerCard(player, tempBrain);
-    tempBrain[player->cardLength]=trashDeck[0]; // get from trashDeck
-    length = player->cardLength+1;
-    printf("\nCard : \n");
-    printAICard(tempBrain, length);
-    printf("\n");
-    printf("\nCard : \n");
+  int jadi;
+  int i;
+  // if (trashLengthNow==0) {
+  //   getFromDeck(player);
+  // }
+  // else {
+  //   emptyTempBrain(tempBrain);
+  //   copyPlayerCard(player, tempBrain);
+  //   tempBrain[player->cardLength]=trashDeck[0]; // get from trashDeck
+  //   length = player->cardLength+1;
+  //   if (searchSymbol(tempBrain, length)) {
+  //     getFromTrash(player);
+  //   }
+  //   system("pause");
+  // }
+  jadi = searchSymbol(player->card, player->cardLength);
+  if (jadi) {
+    for(i=0;i<(jadi%10);i++) {
+      insertMeldCard(player, jadi/10);
+    }
   }
 }

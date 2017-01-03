@@ -116,6 +116,15 @@ void commands(playerControl *player, char command[]) {
     printf("Score anda: %d\n",score(player));
     system("pause");
   }
+  else if (strcmp(command, "auto")==0)
+  {
+    startAI(player);
+  }
+  else if (strcmp(command, "get_card")==0)
+  {
+    scanf("%d", &paramA);
+    getCard(player, paramA);
+  }
   else {
     strcpy(errorMessage, "Perintah tidak ditemukan");
   }
