@@ -9,6 +9,7 @@
 #include "gameManager.c"
 #include "command.c"
 #include "interface.c"
+#include "ai.c"
 
 
 int main() {

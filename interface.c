@@ -15,7 +15,7 @@ void update() {
 
   printf("\nPlayer 1 Card : \n");
   printPlayerCard(&player1);
-
+  
   printf("\nEnter Command : ");
   scanf("%s", &command);
   commands(&player1, command);

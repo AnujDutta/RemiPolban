@@ -51,4 +51,15 @@ void printMeldCard(playerControl *player);
 
 void printTrashCard();
 
+// file ai.c
+void copyPlayerCard(playerControl *player, int tempBrain[]);
+
+void emptyTempBrain(int tempBrain[]);
+
+void printAICard(int tempBrain[], int length);
+
+int searchSymbol(int tempBrain[], int length);
+
+void startAI(playerControl *player);
+
 #endif

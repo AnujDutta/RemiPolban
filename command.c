@@ -63,10 +63,10 @@ void commands(playerControl *player, char command[]) {
   }
   else if (strcmp(command, "polban")==0) {
     if (player->meldLength>=3) {
-      if (sequenceCheck(player)) {
+      if (sequenceCheck(player->meldCard, player->meldLength)) {
         strcpy(errorMessage, "Sequence");
       }
-      else if (groupCheck(player)) {
+      else if (groupCheck(player->meldCard, player->meldLength)) {
         strcpy(errorMessage, "Group");
       }
     }
