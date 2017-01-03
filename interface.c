@@ -1,24 +1,73 @@
 void update() {
   char command[100];
-  int i;
+  int i, choose, player;
+
   system("cls");
   printErrorMessage();
-  printf("Player 1 Score : %d\n", player1.score);
+  if (now.playerNumber==1) {
+    printf("Player 1 Score : %d\n", player1.score);
+    printf("Jumlah Kartu di Deck : %d\n",deckLengthNow);
+
+    printf("Trash Cards : \n");
+    printTrashCard();
+
+    printf("\nPlayer 1 Meld Card : \n");
+    printMeldCard(&player1);
+
+    printf("\nPlayer 1 Card : \n");
+    printPlayerCard(&player1);
+
+    if (turn==0)
+    {
+      option1(&player1);
+    }
+  }
+  else if (now.playerNumber==2) {
+    printf("Player 1 Score : %d\n", player2.score);
+    printf("Jumlah Kartu di Deck : %d\n",deckLengthNow);
+
+    printf("Trash Cards : \n");
+    printTrashCard();
+
+    printf("\nPlayer 1 Meld Card : \n");
+    printMeldCard(&player2);
+
+    printf("\nPlayer 1 Card : \n");
+    printPlayerCard(&player2);
+
+    if (turn==0)
+    {
+      option1(&player2);
+    }
+  }
   printf("Player 2 Score : %d\n", player2.score);
-  printf("Jumlah Kartu di Deck : %d\n",deckLengthNow);
 
-  printf("Trash Cards : \n");
-  printTrashCard();
 
-  printf("\nPlayer 1 Meld Card : \n");
-  printMeldCard(&player1);
-
-  printf("\nPlayer 1 Card : \n");
-  printPlayerCard(&player1);
-
-  printf("\nEnter Command : ");
-  scanf("%s", &command);
-  commands(&player1, command);
+  // printf("\nChoose Command : ");
+  // scanf("%s", &command);
+  // commands(&player1, command);
+}
+void option1(playerControl *player)
+{
+  int choose;
+  printf("Choose Card : \n");
+  printf("1. Take from deck\n" );
+  printf("2. Take from trash\n");
+  scanf("%d",&choose);
+  switch(choose)
+  {
+    case 1:
+    if (player->cardLength<PLAYER_CARD_LENGTH) {
+      getFromDeck(player);
+    }
+    else {
+      strcpy(errorMessage, "Deck sudah Penuh");
+    }
+    break;
+    case 2:
+    getFromTrash(&player1);
+    break;
+  }
 }
 
 void StartGame() // pindahan dari main

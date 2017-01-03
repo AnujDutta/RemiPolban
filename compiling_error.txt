@@ -1,0 +1,2 @@
+In file included from C:\Users\afadh\Documents\remi-polban\main.c:5:
+C:\Users\afadh\Documents\remi-polban\config/setting.c:32: error: syntax error before '.' token

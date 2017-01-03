@@ -62,4 +62,5 @@ int searchSymbol(int tempBrain[], int length);
 
 void startAI(playerControl *player);
 
+void option1();
 #endif
