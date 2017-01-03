@@ -107,6 +107,10 @@ void commands(playerControl *player, char command[]) {
   {
     roundInit();
   }
+  else if (strcmp(command, "menu")==0)
+  {
+    WelcomeScreen();
+  }
   else {
     strcpy(errorMessage, "Perintah tidak ditemukan");
   }
@@ -123,6 +127,7 @@ void help()
     "Sort\t		Mengurutkan kartu yang ada di tangan \n"
     "Meld\t\t	Menyatukan kartu yang sudah jadi --> meld(*posisi kartu)\n"
     "God_mode\t	Cari saja sendiri apa fungsinya hehehe\n"
+    "Menu\t	Back to main menu\n"
     );
   system("pause");
 }
