@@ -63,10 +63,10 @@ void commands(playerControl *player, char command[]) {
   }
   else if (strcmp(command, "polban")==0) {
     if (player->meldLength>=3) {
-      if (sequenceCheck(player->meldCard, player->meldLength)) {
+      if (sequenceCheck(player)) {
         strcpy(errorMessage, "Sequence");
       }
-      else if (groupCheck(player->meldCard, player->meldLength)) {
+      else if (groupCheck(player)) {
         strcpy(errorMessage, "Group");
       }
     }
@@ -107,14 +107,9 @@ void commands(playerControl *player, char command[]) {
   {
     roundInit();
   }
-  else if (strcmp(command, "menu")==0)
+  else if (strcmp(command, "auto")==0)
   {
-    WelcomeScreen();
-  }
-  else if (strcmp(command, "score")==0)
-  {
-    printf("Score anda: %d\n",score(player));
-    system("pause");
+    startAI(&player1);
   }
   else if (strcmp(command, "auto")==0)
   {
@@ -141,7 +136,6 @@ void help()
     "Sort\t		Mengurutkan kartu yang ada di tangan \n"
     "Meld\t\t	Menyatukan kartu yang sudah jadi --> meld(*posisi kartu)\n"
     "God_mode\t	Cari saja sendiri apa fungsinya hehehe\n"
-    "Menu\t	Back to main menu\n"
     );
   system("pause");
 }
