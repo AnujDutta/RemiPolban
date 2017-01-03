@@ -1,2 +1,2 @@
-In file included from C:\Users\afadh\Documents\remi-polban\main.c:5:
-C:\Users\afadh\Documents\remi-polban\config/setting.c:32: error: syntax error before '.' token
+C:\MinGWStudio\MinGW\bin\..\lib\gcc\mingw32\3.4.5\..\..\..\..\mingw32\bin\ld.exe: cannot open output file C:\Users\syamcode\AppData\Local\Temp\main.exe: Permission denied
+collect2: ld returned 1 exit status
