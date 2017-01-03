@@ -28,11 +28,11 @@ void setPlayerScore(playerControl *player, int x) {
   player->score = x;
 }
 
-int groupCheck(int card[], int length) {
+int groupCheck(playerControl *player) {
   int i=0, status;
   status = 1;
-  while(i<length-1 && status) {
-    if (getCardValue(card[i]) != getCardValue(card[i+1])) {
+  while(i<player->meldLength-1 && status) {
+    if (getCardValue(player->meldCard[i]) != getCardValue(player->meldCard[i+1])) {
       status=0;
     }
     i++;
@@ -40,12 +40,12 @@ int groupCheck(int card[], int length) {
   return status;
 }
 
-int sequenceCheck(int card[], int length) {
+int sequenceCheck(playerControl *player) {
   int status;
   status = 0;
-  sortDeckBySymbol(card, length);
-  if (getCardSymbol(card[0])==getCardSymbol(card[length-1])) { //Sama simbol
-    if (getCardValue(card[length-1])-getCardValue(card[0])+1 == length) { //Berurutan
+  sortDeckBySymbol(player->meldCard, player->meldLength);
+  if (getCardSymbol(player->meldCard[0])==getCardSymbol(player->meldCard[player->meldLength-1])) { //Sama simbol
+    if (getCardValue(player->meldCard[player->meldLength-1])-getCardValue(player->meldCard[0])+1 == player->meldLength) { //Berurutan
       status = 1;
     }
   }
