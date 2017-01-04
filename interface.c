@@ -16,16 +16,16 @@ void update() {
 void playerCommand(playerControl *player){
     char command[100];
 
-    printf("Player %d Score : %d\n",now.playerNumber, player->score);
+    printf("%s's Score : %d\n",player->playerName, player->score);
     printf("Jumlah Kartu di Deck : %d\n",deckLengthNow);
 
     printf("Trash Cards : \n");
     printTrashCard();
 
-    printf("\nPlayer %d Meld Card : \n", now.playerNumber);
+    printf("\n%s's Meld Card : \n", player->playerName);
     printMeldCard(player);
 
-    printf("\nPlayer %d Card : \n", now.playerNumber);
+    printf("\n%s's Card : \n", player->playerName);
     printPlayerCard(player);
     printErrorMessage();
 
@@ -224,12 +224,12 @@ void HowToPlay()
     {
       system("exit");
     }
-
-
 }
 
-void getPlayerName(playerControl *player) {
+void enterPlayerName(){
   char name[100];
-  printf("Player name : "); scanf("%s",name);
-  strcpy(player->playerName,name);
+  printf("Player 1's name : "); scanf("%s",name);
+  getPlayerName(&player1, name);
+  printf("Player 2's name : "); scanf("%s",name);
+  getPlayerName(&player2, name);
 }

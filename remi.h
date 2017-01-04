@@ -53,7 +53,7 @@ void printTrashCard();
 
 void playerCommand(playerControl *player);
 
-void getPlayerName(playerControl *player);
+void enterPlayerName();
 
 // file ai.c
 void copyPlayerCard(playerControl *player, int tempBrain[]);

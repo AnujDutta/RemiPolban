@@ -1,11 +1,12 @@
 void gameInit();
 void roundInit();
 void setPlayerScore(playerControl *player, int x);
+void getPlayerName(playerControl *player, char name[100]);
 
 void gameInit() {
   setPlayerScore(&player1, 0);
   setPlayerScore(&player2, 0);
-  getPlayerName(&player1);
+  enterPlayerName();
 
   roundInit();
 }
@@ -29,6 +30,10 @@ void roundInit() {
 
 void setPlayerScore(playerControl *player, int x) {
   player->score = x;
+}
+
+void getPlayerName(playerControl *player, char name[100]) {
+  strcpy(player->playerName, name);
 }
 
 int groupCheck(int card[], int length) {
