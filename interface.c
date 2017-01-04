@@ -227,3 +227,9 @@ void HowToPlay()
 
 
 }
+
+void getPlayerName(playerControl *player) {
+  char name[100];
+  printf("Player name : "); scanf("%s",name);
+  strcpy(player->playerName,name);
+}

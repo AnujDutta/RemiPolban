@@ -53,6 +53,8 @@ void printTrashCard();
 
 void playerCommand(playerControl *player);
 
+void getPlayerName(playerControl *player);
+
 // file ai.c
 void copyPlayerCard(playerControl *player, int tempBrain[]);
 
@@ -65,4 +67,5 @@ int searchSymbol(int tempBrain[], int length);
 void startAI(playerControl *player);
 
 void option1();
+
 #endif
