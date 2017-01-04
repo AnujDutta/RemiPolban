@@ -26,6 +26,7 @@ void roundInit() {
   player2.melded = 0;
 
   now.playerNumber=1;
+  now.turn=1;
 }
 
 void setPlayerScore(playerControl *player, int x) {

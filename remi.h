@@ -55,6 +55,12 @@ void playerCommand(playerControl *player);
 
 void enterPlayerName();
 
+void option1(playerControl *player);
+
+void option2(playerControl *player);
+
+void option3(playerControl *player);
+
 // file ai.c
 void copyPlayerCard(playerControl *player, int tempBrain[]);
 
@@ -65,7 +71,5 @@ void printAICard(int tempBrain[], int length);
 int searchSymbol(int tempBrain[], int length);
 
 void startAI(playerControl *player);
-
-void option1();
 
 #endif

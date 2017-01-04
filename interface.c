@@ -33,17 +33,31 @@ void playerCommand(playerControl *player){
       scanf("%s", &command);
       commands(player, command);
     }
-    else {
+    else if (now.turn == 1)
+    {
       option1(player);
     }
-
-    if (now.playerNumber==1 && strcmp(errorMessage,"")==0) {
-      now.playerNumber = 2;
+    else if (now.turn == 2)
+    {
+      option2(player);
     }
-    else if (now.playerNumber==2 && strcmp(errorMessage,"")==0) {
-      now.playerNumber = 1;
+    else if (now.turn == 3)
+    {
+      option3(player);
     }
 
+    if (strcmp(errorMessage,"")==0 && now.turn != 3) {
+      now.turn++ ;
+    }
+    //
+    // if (now.playerNumber==1 && now.turn==4) {
+    //   now.playerNumber = 2;
+    //   now.turn = 1;
+    // }
+    // else if (now.playerNumber==2 && now.turn==4) {
+    //   now.playerNumber = 1;
+    //   now.turn = 1;
+    // }
 }
 
 void option1(playerControl *player)
@@ -77,7 +91,90 @@ void option1(playerControl *player)
   }
 }
 
-// void option2(playerControl *player)
+void option2(playerControl *player)
+{
+  int paramA;
+  printf("\n\nPilih kartu yang akan dibuang: ");
+  scanf("%d",&paramA);
+  if (paramA<=player->cardLength  && paramA>0) {
+    trashCard(player, paramA-1);
+  }
+}
+
+void option3(playerControl *player)
+{
+  int choose, paramA, paramB;
+
+  printf("\n1. Meld\n");
+  printf("2. Take Meld\n");
+  printf("3. Swap\n" );
+  printf("4. Sort by symbol\n");
+  printf("5. Sort by number\n" );
+  printf("6. End Turn\n");
+  printf("Pilih angka: ");
+  scanf("%d",&choose);
+
+  switch (choose)
+  {
+    case 1:
+    printf("Pilih kartu yang akan dimeld: ");
+    scanf("%d", &paramA);
+    if (paramA<=player->cardLength  && paramA>0) {
+      insertMeldCard(player, paramA-1);
+    }
+    else {
+      strcpy(errorMessage, "Deck sudah Penuh atau Meld Kosong");
+    }
+    break;
+
+    case 2:
+    printf("Pilih kartu yang tidak jadi di meld: " );
+    scanf("%d",&paramA);
+    if (player->cardLength<PLAYER_CARD_LENGTH && player->meldLength>(paramA-1)) {
+      getFromMeld(player, paramA-1);
+    }
+    else {
+      strcpy(errorMessage, "Deck sudah Penuh atau Meld Kosong");
+    }
+    break;
+
+    case 3:
+    printf("Pilih kartu 1 yang akan ditukar: ");
+    scanf("%d", &paramA);
+    printf("\nPilih kartu 2 yang akan ditukar: ");
+    scanf("%d", &paramB);
+    if (paramA<=player->cardLength && paramB<=player->cardLength && paramA>0 && paramB>0) {
+      swapCard(player->card, paramA-1, paramB-1);
+    }
+    else {
+      strcpy(errorMessage, "Input Salah");
+    }
+    break;
+
+    case 4:
+    sortDeckBySymbol(player->card, player->cardLength);
+    break;
+
+    case 5:
+    sortDeckByNumber(player->card, player->cardLength);
+    break;
+
+    case 6:
+    if (now.playerNumber==1) {
+      now.playerNumber = 2;
+      now.turn = 1;
+    }
+    else if (now.playerNumber==2) {
+      now.playerNumber = 1;
+      now.turn = 1;
+    }
+    break;
+
+    default:
+    strcpy(errorMessage, "Input Salah");
+    break;
+  }
+}
 
 void StartGame() // pindahan dari main
 {

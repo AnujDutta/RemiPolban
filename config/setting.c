@@ -7,7 +7,6 @@ int deckLengthNow = 54;
 int trashLengthNow = 0;
 int deck[DECK_CARD_LENGTH];
 int godMode = 0;
-int turn=0;
 int debugMode = 0;
 
 typedef struct {
@@ -22,6 +21,7 @@ typedef struct {
 
 typedef struct{
   int playerNumber;
+  int turn;
 }gameControl;
 
 playerControl player1;
