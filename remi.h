@@ -53,7 +53,7 @@ void printTrashCard();
 
 void playerCommand(playerControl *player);
 
-void enterPlayerName();
+void getPlayerName();
 
 void option1(playerControl *player);
 
