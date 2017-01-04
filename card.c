@@ -135,3 +135,9 @@ void getCard(playerControl *player, int x) {
   player->card[player->cardLength]=x;
   player->cardLength++;
 }
+
+void deleteMeld(playerControl *player, int i) {
+  player->meldCard[i]=0;
+  shiftLeft(player->meldCard, player->meldLength, i+1);
+  player->meldLength--;
+}

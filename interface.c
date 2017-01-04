@@ -215,6 +215,4 @@ void HowToPlay()
     {
       system("exit");
     }
-
-
-//cek }
+}
