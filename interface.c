@@ -225,10 +225,10 @@ void HowToPlay()
     }
 }
 
-void enterPlayerName(){
+void getPlayerName(){
   char name[100];
   printf("Player 1's name : "); scanf("%s",name);
-  getPlayerName(&player1, name);
+  setPlayerName(&player1, name);
   printf("Player 2's name : "); scanf("%s",name);
-  getPlayerName(&player2, name);
+  setPlayerName(&player2, name);
 }
