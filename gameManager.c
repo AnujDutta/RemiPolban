@@ -23,7 +23,6 @@ void roundInit() {
   dealFromDeck(&player2);
   player2.melded = 0;
 
-  now.turn = 0;
   now.playerNumber=1;
 }
 

@@ -4,52 +4,42 @@ void update() {
 
   system("cls");
   printErrorMessage();
-  if (now.playerNumber==1) {
-    printf("Player 1 Score : %d\n", player1.score);
-    printf("Jumlah Kartu di Deck : %d\n",deckLengthNow);
-
-    printf("Trash Cards : \n");
-    printTrashCard();
-
-    printf("\nPlayer 1 Meld Card : \n");
-    printMeldCard(&player1);
-
-    printf("\nPlayer 1 Card : \n");
-    printPlayerCard(&player1);
-
-    if (debugMode) {
-      printf("\nChoose Command : ");
-      scanf("%s", &command);
-      commands(&player1, command);
-    }
-    else if (turn==0){
-      option1(&player1);
-    }
+  if (now.playerNumber == 1)
+  {
+    playerCommand(&player1);
+    now.playerNumber = 2;
   }
-  else if (now.playerNumber==2) {
-    printf("Player 1 Score : %d\n", player2.score);
-    printf("Jumlah Kartu di Deck : %d\n",deckLengthNow);
-
-    printf("Trash Cards : \n");
-    printTrashCard();
-
-    printf("\nPlayer 1 Meld Card : \n");
-    printMeldCard(&player2);
-
-    printf("\nPlayer 1 Card : \n");
-    printPlayerCard(&player2);
-
-    if (debugMode) {
-      printf("\nChoose Command : ");
-      scanf("%s", &command);
-      commands(&player2, command);
-    }
-    else if (turn==0){
-      option1(&player2);
-    }
+  else if (now.playerNumber == 2)
+  {
+    playerCommand(&player2);
+    now.playerNumber = 1;
   }
-  printf("Player 2 Score : %d\n", player2.score);
 }
+
+void playerCommand(int *player){
+    printf("Player 1 Score : %d\n", player.score);
+    printf("Jumlah Kartu di Deck : %d\n",deckLengthNow);
+
+    printf("Trash Cards : \n");
+    printTrashCard();
+
+    printf("\nPlayer 1 Meld Card : \n");
+    printMeldCard(&player);
+
+    printf("\nPlayer 1 Card : \n");
+    printPlayerCard(&player);
+
+    if (debugMode) {
+      printf("\nChoose Command : ");
+      scanf("%s", &command);
+      commands(&player, command);
+    }
+    else {
+      option1(&player);
+    }
+  printf("Player 2 Score : %d\n", player.score);
+}
+
 void option1(playerControl *player)
 {
   int choose;
@@ -217,4 +207,4 @@ void HowToPlay()
     }
 
 
-//cek }
+}

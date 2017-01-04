@@ -21,7 +21,6 @@ typedef struct {
 }playerControl;
 
 typedef struct{
-  int turn;
   int playerNumber;
 }gameControl;
 
