@@ -9,7 +9,6 @@ void update() {
   else if (now.playerNumber == 2)
   {
     playerCommand(&player2);
-    now.playerNumber = 1;
   }
 }
 
@@ -41,7 +40,7 @@ void playerCommand(playerControl *player){
     if (now.playerNumber==1 && strcmp(errorMessage,"")==0) {
       now.playerNumber = 2;
     }
-    else if (now.playerNumber==1 && strcmp(errorMessage,"")==0) {
+    else if (now.playerNumber==2 && strcmp(errorMessage,"")==0) {
       now.playerNumber = 1;
     }
 
