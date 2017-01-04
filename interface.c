@@ -5,7 +5,6 @@ void update() {
   if (now.playerNumber == 1)
   {
     playerCommand(&player1);
-    now.playerNumber = 2;
   }
   else if (now.playerNumber == 2)
   {
@@ -17,16 +16,16 @@ void update() {
 void playerCommand(playerControl *player){
     char command[100];
 
-    printf("Player 1 Score : %d\n", player->score);
+    printf("Player %d Score : %d\n",now.playerNumber, player->score);
     printf("Jumlah Kartu di Deck : %d\n",deckLengthNow);
 
     printf("Trash Cards : \n");
     printTrashCard();
 
-    printf("\nPlayer 1 Meld Card : \n");
+    printf("\nPlayer %d Meld Card : \n", now.playerNumber);
     printMeldCard(player);
 
-    printf("\nPlayer 1 Card : \n");
+    printf("\nPlayer %d Card : \n", now.playerNumber);
     printPlayerCard(player);
     printErrorMessage();
 
@@ -37,6 +36,13 @@ void playerCommand(playerControl *player){
     }
     else {
       option1(player);
+    }
+
+    if (now.playerNumber==1 && strcmp(errorMessage,"")==0) {
+      now.playerNumber = 2;
+    }
+    else if (now.playerNumber==1 && strcmp(errorMessage,"")==0) {
+      now.playerNumber = 1;
     }
 
 }
@@ -66,8 +72,13 @@ void option1(playerControl *player)
       strcpy(errorMessage, "Deck sudah Penuh atau Trash kosong");
     }
     break;
+    default:
+    strcpy(errorMessage, "Input Salah");
+    break;
   }
 }
+
+// void option2(playerControl *player)
 
 void StartGame() // pindahan dari main
 {
