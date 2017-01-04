@@ -17,8 +17,12 @@ void update() {
     printf("\nPlayer 1 Card : \n");
     printPlayerCard(&player1);
 
-    if (turn==0)
-    {
+    if (debugMode) {
+      printf("\nChoose Command : ");
+      scanf("%s", &command);
+      commands(&player1, command);
+    }
+    else if (turn==0){
       option1(&player1);
     }
   }
@@ -35,17 +39,16 @@ void update() {
     printf("\nPlayer 1 Card : \n");
     printPlayerCard(&player2);
 
-    if (turn==0)
-    {
+    if (debugMode) {
+      printf("\nChoose Command : ");
+      scanf("%s", &command);
+      commands(&player2, command);
+    }
+    else if (turn==0){
       option1(&player2);
     }
   }
   printf("Player 2 Score : %d\n", player2.score);
-
-
-  // printf("\nChoose Command : ");
-  // scanf("%s", &command);
-  // commands(&player1, command);
 }
 void option1(playerControl *player)
 {

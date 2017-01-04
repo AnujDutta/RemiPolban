@@ -118,7 +118,12 @@ void commands(playerControl *player, char command[]) {
   else if (strcmp(command, "get_card")==0)
   {
     scanf("%d", &paramA);
-    getCard(player, paramA);
+    if (godMode==1 && player->cardLength+1<=PLAYER_CARD_LENGTH) {
+      getCard(player, paramA);
+    }
+    else {
+      strcpy(errorMessage, "Akses ditolak");
+    }
   }
   else {
     strcpy(errorMessage, "Perintah tidak ditemukan");

@@ -8,6 +8,7 @@ int trashLengthNow = 0;
 int deck[DECK_CARD_LENGTH];
 int godMode = 0;
 int turn=0;
+int debugMode = 1;
 
 typedef struct {
   char playerName[100];

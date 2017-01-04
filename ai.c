@@ -52,19 +52,20 @@ void startAI(playerControl *player) {
   int length;
   int jadi;
   int i;
-  // if (trashLengthNow==0) {
-  //   getFromDeck(player);
-  // }
-  // else {
-  //   emptyTempBrain(tempBrain);
-  //   copyPlayerCard(player, tempBrain);
-  //   tempBrain[player->cardLength]=trashDeck[0]; // get from trashDeck
-  //   length = player->cardLength+1;
-  //   if (searchSymbol(tempBrain, length)) {
-  //     getFromTrash(player);
-  //   }
-  //   system("pause");
-  // }
+  if (trashLengthNow==0) {
+    getFromDeck(player);
+  }
+  else {
+    emptyTempBrain(tempBrain);
+    copyPlayerCard(player, tempBrain);
+    tempBrain[player->cardLength]=trashDeck[0]; // get from trashDeck
+    length = player->cardLength+1;
+    if (searchSymbol(tempBrain, length)) {
+      getFromTrash(player);
+    }
+    system("pause");
+  }
+  
   jadi = searchSymbol(player->card, player->cardLength);
   if (jadi) {
     for(i=0;i<(jadi%10);i++) {
