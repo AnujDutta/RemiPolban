@@ -125,6 +125,11 @@ void commands(playerControl *player, char command[]) {
       strcpy(errorMessage, "Akses ditolak");
     }
   }
+  else if (strcmp(command, "delete_meld")==0)
+  {
+    scanf("%d", &paramA);
+    deleteMeld(player, paramA-1);
+  }
   else {
     strcpy(errorMessage, "Perintah tidak ditemukan");
   }
