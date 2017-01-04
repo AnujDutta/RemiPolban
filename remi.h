@@ -51,7 +51,7 @@ void printMeldCard(playerControl *player);
 
 void printTrashCard();
 
-void playerCommand(int *player);
+void playerCommand(playerControl *player);
 
 // file ai.c
 void copyPlayerCard(playerControl *player, int tempBrain[]);

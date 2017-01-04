@@ -1,9 +1,7 @@
 void update() {
-  char command[100];
   int i, choose, player;
 
   system("cls");
-  printErrorMessage();
   if (now.playerNumber == 1)
   {
     playerCommand(&player1);
@@ -16,28 +14,31 @@ void update() {
   }
 }
 
-void playerCommand(int *player){
-    printf("Player 1 Score : %d\n", player.score);
+void playerCommand(playerControl *player){
+    char command[100];
+
+    printf("Player 1 Score : %d\n", player->score);
     printf("Jumlah Kartu di Deck : %d\n",deckLengthNow);
 
     printf("Trash Cards : \n");
     printTrashCard();
 
     printf("\nPlayer 1 Meld Card : \n");
-    printMeldCard(&player);
+    printMeldCard(player);
 
     printf("\nPlayer 1 Card : \n");
-    printPlayerCard(&player);
+    printPlayerCard(player);
+    printErrorMessage();
 
     if (debugMode) {
       printf("\nChoose Command : ");
       scanf("%s", &command);
-      commands(&player, command);
+      commands(player, command);
     }
     else {
-      option1(&player);
+      option1(player);
     }
-  printf("Player 2 Score : %d\n", player.score);
+
 }
 
 void option1(playerControl *player)
@@ -58,7 +59,12 @@ void option1(playerControl *player)
     }
     break;
     case 2:
-    getFromTrash(&player1);
+    if (player->cardLength<PLAYER_CARD_LENGTH && trashLengthNow!=0) {
+      getFromTrash(player);
+    }
+    else {
+      strcpy(errorMessage, "Deck sudah Penuh atau Trash kosong");
+    }
     break;
   }
 }
@@ -160,7 +166,9 @@ void printPlayerCard(playerControl *player) {
 
 void printErrorMessage() {
   if(strcmp(errorMessage, "")!=0) {
+    printf("\n\n");
     puts(errorMessage);
+    printf("\n\n");
     strcpy(errorMessage, "");
   }
 }
