@@ -65,13 +65,16 @@ void commands(playerControl *player, char command[]) {
   else if (strcmp(command, "polban")==0) {
     if (player->meldLength>=3) {
       if (sequenceCheck(player->meldCard, player->meldLength)) {
-          for(i=player->meldLength;i>0;i--) {
-            player->score+=getCardScore(player->meldCard[0]);
-            deleteMeld(player, 0);
-          }
+        for(i=player->meldLength;i>0;i--) {
+          player->score+=getCardScore(getCardValue(player->meldCard[0]));
+          deleteMeld(player, 0);
+        }
       }
       else if (groupCheck(player->meldCard, player->meldLength)) {
-        strcpy(errorMessage, "Group");
+       for(i=player->meldLength;i>0;i--) {
+          player->score+=getCardScore(getCardValue(player->meldCard[0]));
+          deleteMeld(player, 0);
+        }
       }
     }
     else {
@@ -133,6 +136,19 @@ void commands(playerControl *player, char command[]) {
   {
     scanf("%d", &paramA);
     deleteMeld(player, paramA-1);
+  }
+  else if(strcmp(command,"debug")==0){
+    scanf("%s",&cParamA);
+    if(strcmp(cParamA,"off")==0){
+      debugMode=0;
+    }
+    else if(strcmp(cParamA,"on")==0){
+      strcpy(errorMessage, "Game sudah berada di debug mode");
+      // debugMode=1;
+    }
+    else{
+      strcpy(errorMessage, "Akses ditolak");
+    }
   }
   else {
     strcpy(errorMessage, "Perintah tidak ditemukan");
