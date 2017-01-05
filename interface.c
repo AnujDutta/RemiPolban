@@ -267,7 +267,7 @@ void WelcomeScreen() {
 void printPlayerCard(playerControl *player) {
   int i;
   for (i=0;i<player->cardLength;i++) {
-    printf("%d%c ",getCardValue(player->card[i]), getCardSymbol(player->card[i]));
+    printf("%s%c ",getCardNumber(getCardValue(player->card[i])), getCardSymbol(player->card[i]));
   }
 }
 
@@ -283,7 +283,7 @@ void printErrorMessage() {
 void printMeldCard(playerControl *player) {
   int i;
   for (i=0;i<player->meldLength;i++) {
-    printf("%d%c ",getCardValue(player->meldCard[i]), getCardSymbol(player->meldCard[i]));
+    printf("%s%c ",getCardNumber(getCardValue(player->meldCard[i])), getCardSymbol(player->meldCard[i]));
   }
 }
 

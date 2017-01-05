@@ -8,6 +8,8 @@ int getCardValue(int n); //Return the card number
 
 char getCardSymbol(int n); //Return the card symbol
 
+char* getCardNumber(int n);
+
 void shiftLeft(int card[], int length, int x);
 
 void emptyPlayerDeck(playerControl *player); //Empty the player deck
