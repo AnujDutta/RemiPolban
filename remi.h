@@ -72,4 +72,9 @@ int searchSymbol(int tempBrain[], int length);
 
 void startAI(playerControl *player);
 
+// file score.c
+int getCardScore(int n);
+
+int deckScore(int card[], int length);
+
 #endif

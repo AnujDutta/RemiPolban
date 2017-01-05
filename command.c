@@ -2,6 +2,7 @@ void help();
 
 void commands(playerControl *player, char command[]) {
   int paramA, paramB;
+  int i;
   char cParamA[100];
   if (strcmp(command, "swap")==0) {
     scanf("%d,%d", &paramA, &paramB);
@@ -64,7 +65,10 @@ void commands(playerControl *player, char command[]) {
   else if (strcmp(command, "polban")==0) {
     if (player->meldLength>=3) {
       if (sequenceCheck(player->meldCard, player->meldLength)) {
-        strcpy(errorMessage, "Sequence");
+          for(i=player->meldLength;i>0;i--) {
+            player->score+=getCardScore(player->meldCard[0]);
+            deleteMeld(player, 0);
+          }
       }
       else if (groupCheck(player->meldCard, player->meldLength)) {
         strcpy(errorMessage, "Group");
