@@ -7,7 +7,7 @@ int deckLengthNow = 54;
 int trashLengthNow = 0;
 int deck[DECK_CARD_LENGTH];
 int godMode = 0;
-int debugMode = 1;
+int debugMode = 0;
 int difficulty;
 
 typedef struct {
