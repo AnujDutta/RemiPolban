@@ -63,13 +63,32 @@ void startAI(playerControl *player) {
     if (searchSymbol(tempBrain, length)) {
       getFromTrash(player);
     }
-    system("pause");
+    else {
+      getFromDeck(player);
+    }
   }
-  
+
   jadi = searchSymbol(player->card, player->cardLength);
   if (jadi) {
     for(i=0;i<(jadi%10);i++) {
       insertMeldCard(player, jadi/10);
+    }
+  }
+
+  trashCard(player, 0);
+
+  if (player->meldLength>=3) {
+    if (sequenceCheck(player->meldCard, player->meldLength)) {
+      for(i=player->meldLength;i>0;i--) {
+        player->score+=getCardScore(getCardValue(player->meldCard[0]));
+        deleteMeld(player, 0);
+      }
+    }
+    else if (groupCheck(player->meldCard, player->meldLength)) {
+     for(i=player->meldLength;i>0;i--) {
+        player->score+=getCardScore(getCardValue(player->meldCard[0]));
+        deleteMeld(player, 0);
+      }
     }
   }
 }
