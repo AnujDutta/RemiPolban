@@ -267,14 +267,16 @@ void WelcomeScreen() {
 void printPlayerCard(playerControl *player) {
   int i, j;
   for (i=0;i<player->cardLength;i++) {
-    if(player->card[i]>0 && player->card[i]<=26){
-      printf(BACK_WHT FORE_RED "%s    " RESET " ",getCardNumber(getCardValue(player->card[i])));  
-    }
-    else if(player->card[i]>26 && player->card[i]<=52){
-      printf(BACK_WHT FORE_BLC "%s    " RESET " ",getCardNumber(getCardValue(player->card[i])));
-    }
-    else {
-      printf(BACK_WHT FORE_YEL "%c     " RESET " ", getCardSymbol(player->card[i]));      
+    switch(player->card[i]) {
+      case 1 ... 26: 
+        printf(BACK_WHT FORE_RED "%s    " RESET " ",getCardNumber(getCardValue(player->card[i])));  
+        break;
+      case 27 ... 52:  
+        printf(BACK_WHT FORE_BLC "%s    " RESET " ",getCardNumber(getCardValue(player->card[i])));
+        break;
+      case 53 ... 54:
+        printf(BACK_WHT FORE_YEL "%c     " RESET " ", getCardSymbol(player->card[i]));      
+        break;
     }
   } 
   printf("\n");
@@ -285,14 +287,16 @@ void printPlayerCard(playerControl *player) {
     printf("\n");   
   }
   for (i=0;i<player->cardLength;i++) {
-    if(player->card[i]>0 && player->card[i]<=26){
-      printf(BACK_WHT FORE_RED "     %c" RESET " ", getCardSymbol(player->card[i]));
-    }
-    else if(player->card[i]>26 && player->card[i]<=52){
-      printf(BACK_WHT FORE_BLC "     %c" RESET " ", getCardSymbol(player->card[i]));
-    }
-    else {
-      printf(BACK_WHT FORE_YEL "     %c" RESET " ", getCardSymbol(player->card[i]));
+    switch(player->card[i]) {
+      case 1 ... 26:
+        printf(BACK_WHT FORE_RED "     %c" RESET " ", getCardSymbol(player->card[i]));
+        break;
+      case 27 ... 52:  
+        printf(BACK_WHT FORE_BLC "     %c" RESET " ", getCardSymbol(player->card[i]));
+        break;
+      case 53 ... 54:
+        printf(BACK_WHT FORE_YEL "     %c" RESET " ", getCardSymbol(player->card[i]));
+        break;
     }
   }
   printf("\n");
@@ -308,15 +312,77 @@ void printErrorMessage() {
 }
 
 void printMeldCard(playerControl *player) {
-  int i;
+  int i, j;
   for (i=0;i<player->meldLength;i++) {
-    printf("%s%c ",getCardNumber(getCardValue(player->meldCard[i])), getCardSymbol(player->meldCard[i]));
+    switch(player->meldCard[i]) {
+      case 1 ... 26: 
+        printf(BACK_WHT FORE_RED "%s    " RESET " ",getCardNumber(getCardValue(player->meldCard[i])));
+        break;
+      case 27 ... 52:  
+        printf(BACK_WHT FORE_BLC "%s    " RESET " ",getCardNumber(getCardValue(player->meldCard[i])));
+        break;
+      case 53 ... 54:
+        printf(BACK_WHT FORE_YEL "%c     " RESET " ", getCardSymbol(player->meldCard[i]));      
+        break;
+    }
+  } 
+  printf("\n");
+  for(j=0;j<3;j++){
+    for (i=0;i<player->meldLength;i++) {
+      printf(BACK_WHT "      " RESET " ");
+    }
+    printf("\n");   
   }
+  for (i=0;i<player->meldLength;i++) {
+    switch(player->meldCard[i]) {
+      case 1 ... 26:
+        printf(BACK_WHT FORE_RED "     %c" RESET " ", getCardSymbol(player->meldCard[i]));
+        break;
+      case 27 ... 52:  
+        printf(BACK_WHT FORE_BLC "     %c" RESET " ", getCardSymbol(player->meldCard[i]));
+        break;
+      case 53 ... 54:
+        printf(BACK_WHT FORE_YEL "     %c" RESET " ", getCardSymbol(player->meldCard[i]));
+        break;
+    }
+  }
+  printf("\n");
 }
 
 void printTrashCard() {
   if (trashLengthNow!=0) {
-    printf("%d%c ",getCardValue(trashDeck[0]), getCardSymbol(trashDeck[0]));
+    int i;
+    switch(trashDeck[0]) {
+      case 1 ... 26:
+        printf(BACK_WHT FORE_RED "%s    " RESET " ",getCardNumber(getCardValue(trashDeck[0])));
+        break;
+      case 27 ... 52:
+        printf(BACK_WHT FORE_BLC "%s    " RESET " ",getCardNumber(getCardValue(trashDeck[0])));
+        break;
+      case 53 ... 54:
+        printf(BACK_WHT FORE_YEL "%c     " RESET " ", getCardSymbol(trashDeck[0]));      
+        break;
+    }
+    printf("\n");
+    for(i=0;i<3;i++){
+      printf(BACK_WHT "      " RESET " ");
+      printf("\n");
+    }
+    switch(trashDeck[0]) {
+      case 1 ... 26:
+        printf(BACK_WHT FORE_RED "     %c" RESET " ", getCardSymbol(trashDeck[0]));
+        break;
+      case 27 ... 52:
+        printf(BACK_WHT FORE_BLC "     %c" RESET " ", getCardSymbol(trashDeck[0]));
+        break;
+      case 53 ... 54:
+        printf(BACK_WHT FORE_YEL "     %c" RESET " ", getCardSymbol(trashDeck[0]));
+        break;
+    }
+    printf("\n");
+  }
+  else {
+    printf("\n\n\n\n\n");
   }
 }
 void HowToPlay()
