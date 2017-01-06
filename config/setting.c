@@ -18,6 +18,7 @@ typedef struct {
   int melded;
   int cardLength;
   int score;
+  int status;
 }playerControl;
 
 typedef struct{

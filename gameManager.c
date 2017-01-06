@@ -19,6 +19,7 @@ void roundInit() {
   emptyMeldDeck(&player1);
   dealFromDeck(&player1);
   player1.melded = 0;
+  player1.status=0;
 
   emptyPlayerDeck(&player2);
   emptyMeldDeck(&player2);

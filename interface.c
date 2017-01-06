@@ -13,6 +13,7 @@ void update() {
         playerCommand(&player2);
       }
     } while(player1.melded<2 && player2.melded<2 && (player1.cardLength>2 || player1.meldLength!=0) && (player2.cardLength>2 || player2.meldLength!=0) && deckLengthNow!=0);
+
     if (player1.score>player2.score) {
       printf("Player 1 Win\n");
     }
@@ -25,6 +26,7 @@ void update() {
     system("pause");
     roundInit();
   } while(player1.score<WIN_SCORE && player2.score<WIN_SCORE);
+
   if (player1.score>=WIN_SCORE) {
     printf("Player 1 Win\n");
   }
