@@ -141,6 +141,10 @@ void commands(playerControl *player, char command[]) {
       strcpy(errorMessage, "Akses ditolak");
     }
   }
+  else if (strcmp(command, "end_turn")==0)
+  {
+    changeTurn();
+  }
   else {
     strcpy(errorMessage, "Perintah tidak ditemukan");
   }

@@ -64,3 +64,14 @@ int sequenceCheck(int card[], int length) {
   }
   return status;
 }
+
+void changeTurn() {
+  if (now.playerNumber==1) {
+    now.playerNumber = 2;
+    now.turn = 1;
+  }
+  else if (now.playerNumber==2) {
+    now.playerNumber = 1;
+    now.turn = 1;
+  }
+}
