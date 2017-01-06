@@ -64,17 +64,8 @@ void commands(playerControl *player, char command[]) {
   }
   else if (strcmp(command, "polban")==0) {
     if (player->meldLength>=3) {
-      if (sequenceCheck(player->meldCard, player->meldLength)) {
-        for(i=player->meldLength;i>0;i--) {
-          player->score+=getCardScore(getCardValue(player->meldCard[0]));
-          deleteMeld(player, 0);
-        }
-      }
-      else if (groupCheck(player->meldCard, player->meldLength)) {
-       for(i=player->meldLength;i>0;i--) {
-          player->score+=getCardScore(getCardValue(player->meldCard[0]));
-          deleteMeld(player, 0);
-        }
+      if (sequenceCheck(player->meldCard, player->meldLength) || groupCheck(player->meldCard, player->meldLength)) {
+        pushMeld(player);
       }
     }
     else {

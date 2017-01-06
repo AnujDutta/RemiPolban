@@ -47,6 +47,11 @@ int searchSymbol(int tempBrain[], int length) {
   return ketemu;
 }
 
+void trashAI(playerControl *player) {
+  int i;
+  srand(time(NULL));
+  trashCard(player, rand() % (player->cardLength-1));
+}
 void startAI(playerControl *player) {
   int tempBrain[PLAYER_CARD_LENGTH];
   int length;
@@ -75,20 +80,11 @@ void startAI(playerControl *player) {
     }
   }
 
-  trashCard(player, 0);
-
+  trashAI(player);
+  
   if (player->meldLength>=3) {
-    if (sequenceCheck(player->meldCard, player->meldLength)) {
-      for(i=player->meldLength;i>0;i--) {
-        player->score+=getCardScore(getCardValue(player->meldCard[0]));
-        deleteMeld(player, 0);
-      }
-    }
-    else if (groupCheck(player->meldCard, player->meldLength)) {
-     for(i=player->meldLength;i>0;i--) {
-        player->score+=getCardScore(getCardValue(player->meldCard[0]));
-        deleteMeld(player, 0);
-      }
+    if (sequenceCheck(player->meldCard, player->meldLength) || groupCheck(player->meldCard, player->meldLength)) {
+      pushMeld(player);
     }
   }
 }

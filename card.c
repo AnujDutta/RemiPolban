@@ -160,3 +160,11 @@ void deleteMeld(playerControl *player, int i) {
   shiftLeft(player->meldCard, player->meldLength, i+1);
   player->meldLength--;
 }
+
+void pushMeld(playerControl *player) {
+  int i;
+  for(i=player->meldLength;i>0;i--) {
+    player->score+=getCardScore(getCardValue(player->meldCard[0]));
+    deleteMeld(player, 0);
+  }
+}
