@@ -1,5 +1,3 @@
-void help();
-
 void commands(playerControl *player, char command[]) {
   int paramA, paramB;
   int i;

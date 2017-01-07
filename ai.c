@@ -1,7 +1,7 @@
-void copyPlayerCard(playerControl *player, int tempBrain[]) {
+void copyPlayerCard(playerControl player, int tempBrain[]) {
   int i;
-  for(i=0;i<player->cardLength;i++) {
-    tempBrain[i]=player->card[i];
+  for(i=0;i<player.cardLength;i++) {
+    tempBrain[i]=player.card[i];
   }
 }
 
@@ -11,6 +11,7 @@ void emptyTempBrain(int tempBrain[]) {
     tempBrain[i]=0;
   }
 }
+
 void printAICard(int tempBrain[], int length) {
   int i;
   for(i=0;i<length;i++) {
@@ -73,6 +74,7 @@ void trashAI(playerControl *player) {
   srand(time(NULL));
   trashCard(player, rand() % (player->cardLength-1));
 }
+
 void startAI(playerControl *player) {
   int tempBrain[PLAYER_CARD_LENGTH];
   int length;
@@ -83,7 +85,7 @@ void startAI(playerControl *player) {
   // }
   // else {
     emptyTempBrain(tempBrain);
-    copyPlayerCard(player, tempBrain);
+    copyPlayerCard(*player, tempBrain);
   //   tempBrain[player->cardLength]=trashDeck[0]; // get from trashDeck
     length = player->cardLength;
     if (searchSequence(tempBrain, length)) {

@@ -1,6 +1,6 @@
 void resetDeck() { //Reset deck
   int i;
-  deckLengthNow=54;
+  deckLengthNow=DECK_CARD_LENGTH;
   for (i=0;i<DECK_CARD_LENGTH;i++) {
     deck[i]=i+1;
   }
