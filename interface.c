@@ -17,7 +17,7 @@ void update() {
     if (player1.score>player2.score) {
       printf("Player 1 Win");
     }
-    else if (player1.score=player2.score){
+    else if (player1.score==player2.score){
       printf("Player Draw");
     }
     else {
