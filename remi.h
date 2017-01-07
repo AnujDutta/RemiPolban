@@ -63,6 +63,8 @@ void option2(playerControl *player);
 
 void option3(playerControl *player);
 
+void log(playerControl *player, char command[]);
+
 // file ai.c
 void copyPlayerCard(playerControl *player, int tempBrain[]);
 
