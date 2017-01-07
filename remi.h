@@ -76,25 +76,33 @@ void WelcomeScreen();
 
 void printPlayerCard(playerControl *player, int x, int y);
 
-void printErrorMessage();
+void printErrorMessage(int x, int y);
 
-void printMeldCard(playerControl *player);
+void printMeldCard(playerControl *player, int x, int y);
 
-void printTrashCard();
+void printTrashCard(int x, int y);
 
 void playerCommand(playerControl *player, playerControl *player2);
 
 void getPlayerName();
 
-void option1(playerControl *player);
+void option1(playerControl *player, int x, int y);
 
-void option2(playerControl *player);
+void option2(playerControl *player, int x, int y);
 
-void option3(playerControl *player);
+void option3(playerControl *player, int x, int y);
 
 void printClosedCard(playerControl *player, int x, int y);
 
 void gotoxy(int x, int y);
+
+void printClosedDeck(int x, int y);
+
+void printBorder(char color[], int width, int height, int x, int y);
+
+void printPlayerName(playerControl *player, int x, int y);
+
+void printPlayerScore(playerControl *player, int x, int y);
 
 // file ai.c
 void copyPlayerCard(playerControl player, int tempBrain[]);
