@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <windows.h>
+#include <time.h>
 #include "config/setting.c"
 #include "config/characterSpecial.c"
 #include "remi.h"
