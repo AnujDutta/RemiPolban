@@ -125,6 +125,8 @@ void sendLog(playerControl player, char log[]);
 
 // file command.c
 
+void help();
+
 void cardText(char cardText[], int card);
 
 #endif
