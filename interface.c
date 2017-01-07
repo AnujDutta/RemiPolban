@@ -6,11 +6,11 @@ void update() {
       system("cls");
       if (now.playerNumber == 1)
       {
-        playerCommand(&player1);
+        playerCommand(&player1, &player2);
       }
       else if (now.playerNumber == 2)
       {
-        playerCommand(&player2);
+        playerCommand(&player2, &player1);
       }
     } while(player1.melded<2 && player2.melded<2 && (player1.cardLength>2 || player1.meldLength!=0) && (player2.cardLength>2 || player2.meldLength!=0) && deckLengthNow!=0);
 
@@ -36,8 +36,11 @@ void update() {
   system("pause");
 }
 
-void playerCommand(playerControl *player){
+void playerCommand(playerControl *player, playerControl *player2){
     char command[100];
+
+    printf("%s's Card : \n", player2->playerName);
+    printClosedCard(player2,7,2);
 
     printf("%s's Score : %d\n",player->playerName, player->score);
     printf("Jumlah Kartu di Deck : %d\n",deckLengthNow);
@@ -49,7 +52,7 @@ void playerCommand(playerControl *player){
     printMeldCard(player);
 
     printf("\n%s's Card : \n", player->playerName);
-    printPlayerCard(player);
+    printPlayerCard(player, 7,28);
     printErrorMessage();
 
     if (debugMode) {
@@ -281,8 +284,9 @@ void WelcomeScreen() {
   } while(TRUE);
 }
 
-void printPlayerCard(playerControl *player) {
+void printPlayerCard(playerControl *player, int x, int y) {
   int i, j;
+  gotoxy(x,y);
   for (i=0;i<player->cardLength;i++) {
     switch(player->card[i]) {
       case 1 ... 26:
@@ -296,13 +300,15 @@ void printPlayerCard(playerControl *player) {
         break;
     }
   }
-  printf("\n");
+  y++;
   for(j=0;j<3;j++){
+    gotoxy(x,y);
     for (i=0;i<player->cardLength;i++) {
       printf(BACK_WHT "      " RESET " ");
     }
-    printf("\n");
+    y++;
   }
+  gotoxy(x,y);
   for (i=0;i<player->cardLength;i++) {
     switch(player->card[i]) {
       case 1 ... 26:
@@ -438,4 +444,22 @@ void getPlayerName(){
   setPlayerName(&player1, name);
   printf("Player 2's name : "); scanf("%s",name);
   setPlayerName(&player2, name);
+}
+
+void gotoxy(int x, int y){  
+  coord.X = x;
+  coord.Y = y;
+  SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord); 
+}
+
+void printClosedCard(playerControl *player, int x, int y){
+  int i,j;
+  for(j=0;j<5;j++){
+    gotoxy(x,y);
+    for(i=0;i<player->cardLength;i++){
+      printf(BACK_WHT FORE_BLU "||||||"RESET" ");
+    }
+    y++;
+  }
+  printf("\n");
 }

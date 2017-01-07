@@ -74,7 +74,7 @@ void menuDisplay(int i);
 
 void WelcomeScreen();
 
-void printPlayerCard(playerControl *player);
+void printPlayerCard(playerControl *player, int x, int y);
 
 void printErrorMessage();
 
@@ -82,7 +82,7 @@ void printMeldCard(playerControl *player);
 
 void printTrashCard();
 
-void playerCommand(playerControl *player);
+void playerCommand(playerControl *player, playerControl *player2);
 
 void getPlayerName();
 
@@ -91,6 +91,10 @@ void option1(playerControl *player);
 void option2(playerControl *player);
 
 void option3(playerControl *player);
+
+void printClosedCard(playerControl *player, int x, int y);
+
+void gotoxy(int x, int y);
 
 // file ai.c
 void copyPlayerCard(playerControl player, int tempBrain[]);
