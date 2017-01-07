@@ -63,8 +63,6 @@ void option2(playerControl *player);
 
 void option3(playerControl *player);
 
-void log(playerControl *player, char command[]);
-
 // file ai.c
 void copyPlayerCard(playerControl *player, int tempBrain[]);
 
@@ -80,5 +78,13 @@ void startAI(playerControl *player);
 int getCardScore(int n);
 
 int deckScore(int card[], int length);
+
+// file gameManager.c
+
+void sendLog(playerControl player, char log[]);
+
+// file command.c
+
+void cardText(char cardText[], int card);
 
 #endif

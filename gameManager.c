@@ -75,3 +75,25 @@ void changeTurn() {
     now.turn = 1;
   }
 }
+
+void sendLog(playerControl player, char log[])
+{
+  time_t rawtime;
+  struct tm * timeinfo;
+  // int i;
+  FILE *pf;
+
+  time ( &rawtime );
+  timeinfo = localtime ( &rawtime );
+
+  if((pf=fopen("log.dat","a"))==NULL)
+  {
+    printf("File log tidak ada");
+    exit(1);
+  }
+  else
+  {
+    fprintf(pf,"%s .. %s %s pada turn ke %d\n",asctime (timeinfo), player.playerName, log, now.turn);
+  }
+  fclose(pf);
+}

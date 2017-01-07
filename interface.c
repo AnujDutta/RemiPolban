@@ -71,7 +71,6 @@ void playerCommand(playerControl *player){
     }
 
     if (strcmp(errorMessage,"")==0 && now.turn != 3) {
-      log(player, command);
       now.turn++ ;
     }
     //
@@ -439,26 +438,4 @@ void getPlayerName(){
   setPlayerName(&player1, name);
   printf("Player 2's name : "); scanf("%s",name);
   setPlayerName(&player2, name);
-}
-
-void log(playerControl *player, char command[])
-{
-  time_t rawtime;
-  struct tm * timeinfo;
-  // int i;
-  FILE *pf;
-
-  time ( &rawtime );
-  timeinfo = localtime ( &rawtime );
-
-  if((pf=fopen("log.dat","a"))==NULL)
-  {
-    printf("File log tidak ada");
-    exit(1);
-  }
-  else
-  {
-    fprintf(pf,"%s .. %s telah mengirimkan kartu  ke dalam %s pada turn ke %d\n",asctime (timeinfo), player->playerName, command, now.turn);
-  }
-  fclose(pf);
 }

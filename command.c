@@ -4,6 +4,8 @@ void commands(playerControl *player, char command[]) {
   int paramA, paramB;
   int i;
   char cParamA[100];
+  char logCard[100];
+  char logs[100];
   if (strcmp(command, "swap")==0) {
     scanf("%d,%d", &paramA, &paramB);
     if (paramA<=player->cardLength && paramB<=player->cardLength && paramA>0 && paramB>0) {
@@ -14,7 +16,12 @@ void commands(playerControl *player, char command[]) {
     }
   }
   else if (strcmp(command, "take_deck")==0) {
+    strcpy(logs, "Mengambil kartu ");
+    cardText(logCard, deck[deckLengthNow-1]);
+    strcat(logs, logCard);
+    strcat(logs, " dari deck");
     if (player->cardLength<PLAYER_CARD_LENGTH) {
+      sendLog(*player,  logs);
       getFromDeck(player);
     }
     else {
@@ -163,4 +170,16 @@ void help()
     "God_mode\t	Cari saja sendiri apa fungsinya hehehe\n"
     );
   system("pause");
+}
+
+void cardText(char cardText[], int card) {
+  char value[2];
+  sprintf(value, "%d", getCardValue(card));
+  strcpy(cardText, value);
+  switch(getCardSymbol(card)) {
+    case HEART : strcat(cardText, " Heart");break;
+    case DIAMOND : strcat(cardText, " Diamond");break;
+    case CLUB : strcat(cardText, " Club");break;
+    case SPADE : strcat(cardText, " Spade");break;
+  }
 }
