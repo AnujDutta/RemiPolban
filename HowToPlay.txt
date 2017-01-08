@@ -1,0 +1,8 @@
+How To Play
+
+1. Setiap Pemain akan mendapatkan 7 kartu
+2. Pemain pertama mengambil kartu dari Deck kemudian memilih satu kartu yang tidak dikehendaki untuk dibuang ke Trash
+3. Dilanjutkan pemain  kedua
+4. Pada setiap giliran pemain boleh mengambil kartu dari deck atau dari buangan
+5. Syarat mengambil kartu dari buangan (Trash) adalah langsung jadi (minimal di tangan memiliki dua kartu yang membentuk deretan)
+6. Ingat! setiap habis mengambil kartu harus buang satu kartu

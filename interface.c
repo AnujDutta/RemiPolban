@@ -472,23 +472,25 @@ void printTrashCard(int x, int y) {
     // printf("\n");
   }
 }
+
 void HowToPlay()
 {
   char back_main;
-
-  printf("How To Play\n"
-
-    "- Setiap pemain akan mendapatkan 7 kartu \n"
-    "- Terdapat 1 buah deck kartu yang bisa diambil pemain \n\n"
-
-    "- Pemain pertama mulai mengambil kartu di deck, memilih kartu yang tidak dikehendaki dari tangan untuk dibuang.\n"
-    "- Dilanjutkan dengan pemain berikutnya\n"
-    "- Ingat selalu! setelah ambil kartu dimana saja, harus buang satu kartu\n"
-    "- Kita boleh memilih dalam satu giliran mau ambil kartu di deck atau ambil kartu di tempat buangan.\n"
-    "- Syarat untuk ngambil kartu di buangan adalah harus langsung jadi(minimal di tangan punya 2 kartu). Maksimal pengambilan 7 kartu dari ujung awal. Misal : kita punya 3 dan 5 hati, ternyata di pembuangan ada kartu 4, dan masih dalam batas 7 kartu. Kita boleh ambil dan tetap buang satu kartu"
-    "- Oh iya. Yang jadi pertama kali tiap pemain harus seri, bukan sama, dan belum boleh pakai joker. Kecuali as, karena tak punya seri.\n");
-
-    printf("\nBack To Main menu? (Y/T) ");
+  char string [125];
+  FILE *f;
+  int line;
+  
+  system ("cls");
+  f = fopen ("HowToPlay.txt", "r");
+  for (line=0; line<=8; line++){
+  
+	fgets(string,125, (FILE*)f);
+	printf("%s",string);
+}
+  
+    fclose (f);
+    
+	printf("\nBack To Main menu? (Y/T) ");
     fflush(stdin);
     back_main = getchar();
 
