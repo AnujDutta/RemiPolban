@@ -32,4 +32,3 @@ playerControl player2;
 int trashDeck[TRASH_CARD_LENGTH];
 char errorMessage[100]="";
 gameControl now;
-COORD coord;

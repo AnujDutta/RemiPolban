@@ -139,11 +139,11 @@ void commands(playerControl *player, char command[]) {
       debugMode=0;
     }
     else if(strcmp(cParamA,"on")==0){
+      debugMode=1;
       strcpy(errorMessage, "Game sudah berada di debug mode");
-      // debugMode=1;
     }
     else{
-      strcpy(errorMessage, "Akses ditolak");
+      strcpy(errorMessage, "Parameter Salah");
     }
   }
   else if (strcmp(command, "end_turn")==0)

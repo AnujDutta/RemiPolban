@@ -197,12 +197,15 @@ void option3(playerControl *player, int x, int y)
     printf("Pilih kartu yang tidak jadi di meld: " );
     // scanf("%d",&paramA);
     paramA=chooseMeld(player,9,25);
-    if (player->cardLength<PLAYER_CARD_LENGTH && player->meldLength>(paramA-1)) {
+    if(paramA>0){
       getFromMeld(player, paramA-1);
     }
-    else {
-      strcpy(errorMessage, "Deck sudah Penuh atau Meld Kosong");
-    }
+    // if (player->cardLength<PLAYER_CARD_LENGTH && player->meldLength>(paramA-1)) {
+    //   getFromMeld(player, paramA-1);
+    // }
+    // else {
+    //   strcpy(errorMessage, "Deck sudah Penuh atau Meld Kosong");
+    // }
     break;
 
     case 3:
@@ -232,6 +235,10 @@ void option3(playerControl *player, int x, int y)
 
     case 6:
     changeTurn();
+    break;
+
+    case 99:
+    debugMode=1;strcpy(errorMessage,"Debug mode on");
     break;
 
     default:
@@ -503,9 +510,8 @@ void getPlayerName(){
   setPlayerName(&player2, name);
 }
 
-void gotoxy(int x, int y){  
-  coord.X = x;
-  coord.Y = y;
+void gotoxy(int x, int y){ 
+  COORD coord={x,y}; 
   SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord); 
 }
 
@@ -577,24 +583,40 @@ int chooseCard(playerControl *player, int x, int y){
       z-=7;
       i--;
     }
+    else if(k==96){ //debug button (`)
+      strcpy(errorMessage,"Debug mode on");
+      debugMode=1;
+      return 0;
+    }
   }while(k!=13);
   return ((i%player->cardLength)+player->cardLength)%player->cardLength+1;
 }
 
 int chooseMeld(playerControl *player, int x, int y){
-  int i=0,z=0;
-  char k;
-  do {
-    gotoxy((((z%(7*player->meldLength))+(7*player->meldLength))%(7*player->meldLength))+x,y);
-    k=getch();
-    if(k==77){
-      z+=7;
-      i++;
-    }
-    else if(k==75){
-      z-=7;
-      i--;
-    }
-  }while(k!=13);
-  return ((i%player->meldLength)+player->meldLength)%player->meldLength+1;
+  if(player->meldLength>0){
+    int i=0,z=0;
+    char k;
+    do {
+      gotoxy((((z%(7*player->meldLength))+(7*player->meldLength))%(7*player->meldLength))+x,y);
+      k=getch();
+      if(k==77){
+        z+=7;
+        i++;
+      }
+      else if(k==75){
+        z-=7;
+        i--;
+      }
+      else if(k==96){ //debug button (`)
+        strcpy(errorMessage,"Debug mode on");
+        debugMode=1;
+        return 0;
+      }
+    }while(k!=13);
+    return ((i%player->meldLength)+player->meldLength)%player->meldLength+1;
+  }
+  else{
+    strcpy(errorMessage,"Meld kosong");
+    return 0;
+  }
 }
