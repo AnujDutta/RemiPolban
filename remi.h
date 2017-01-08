@@ -63,6 +63,9 @@ void deleteMeld(playerControl *player, int i);
 void pushMeld(playerControl *player);
 //Mengosongkan yang ada di meld deck player lalu menambah skor player sesuai dengan nilai kartu dalam deck meld player tersebut
 
+void emptyTrash();
+//Mengosongkan Trash
+
 //file interface.c
 void update();
 

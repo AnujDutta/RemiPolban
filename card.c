@@ -168,3 +168,8 @@ void pushMeld(playerControl *player) {
     deleteMeld(player, 0);
   }
 }
+
+void emptyTrash(){
+  trashDeck[0]=0;
+  trashLengthNow=0;
+}

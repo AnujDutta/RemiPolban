@@ -14,6 +14,7 @@ void gameInit() {
 void roundInit() {
   resetDeck();
   shuffleDeck();
+  emptyTrash();
 
   emptyPlayerDeck(&player1);
   emptyMeldDeck(&player1);
