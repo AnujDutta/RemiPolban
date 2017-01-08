@@ -473,11 +473,21 @@ void printTrashCard(int x, int y) {
       case 53 ... 54:
         printf(BACK_WHT FORE_YEL "%c     " RESET " ", getCardSymbol(trashDeck[0]));
         break;
+      default:
+        printf("XXXXXX ");
+        break;
     }
     y++;
     for(i=0;i<3;i++){
       gotoxy(x,y);
-      printf(BACK_WHT "      " RESET " ");
+      switch(trashDeck[0]){
+        case 1 ... 54:
+          printf(BACK_WHT "      " RESET " ");
+          break;
+        default:
+          printf("XXXXXX ");
+          break;
+      }
       y++;
     }
     gotoxy(x,y);
@@ -490,6 +500,9 @@ void printTrashCard(int x, int y) {
         break;
       case 53 ... 54:
         printf(BACK_WHT FORE_YEL "     %c" RESET " ", getCardSymbol(trashDeck[0]));
+        break;
+      default:
+        printf("XXXXXX ");
         break;
     }
     // printf("\n");
