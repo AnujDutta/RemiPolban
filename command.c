@@ -137,6 +137,7 @@ void commands(playerControl *player, char command[]) {
     scanf("%s",&cParamA);
     if(strcmp(cParamA,"off")==0){
       debugMode=0;
+      strcpy(errorMessage, "Debug mode off");
     }
     else if(strcmp(cParamA,"on")==0){
       debugMode=1;
