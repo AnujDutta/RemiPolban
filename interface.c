@@ -126,9 +126,7 @@ void option1(playerControl *player, int x, int y)
   gotoxy(x,y+1);
   printf("2. Take from trash");
   gotoxy(x,y+2);
-  // printf("Choose Card : ");
   choose=chooseOption(2,x,y);
-  // scanf("%d",&choose);
   switch(choose)
   {
     case 1:
@@ -161,7 +159,6 @@ void option2(playerControl *player, int x, int y)
   int paramA;
   gotoxy(x,y);
   printf("Pilih kartu yang akan dibuang: ");
-  // scanf("%d",&paramA);
   paramA=chooseCard(player,9,31);
   if (paramA<=player->cardLength  && paramA>0) {
     trashCard(player, paramA-1);
@@ -187,16 +184,14 @@ void option3(playerControl *player, int x, int y)
   gotoxy(x,y+5);
   printf("6. End Turn");
   gotoxy(x,y+6);
-  // printf("Pilih angka: ");
-  // scanf("%d",&choose);
-  choose=chooseOption(6,x,y);
+  printf("7. POLBAN");
+  choose=chooseOption(7,x,y);
 
   switch (choose)
   {
     case 1:
     gotoxy(x,y+8);
     printf("Pilih kartu yang akan dimeld: ");
-    // scanf("%d", &paramA);
     paramA=chooseCard(player,9,31);
     if (paramA<=player->cardLength  && paramA>0) {
       insertMeldCard(player, paramA-1);
@@ -205,14 +200,13 @@ void option3(playerControl *player, int x, int y)
       strcpy(errorMessage,"Debug mode on");
     }
     else {
-      strcpy(errorMessage, "Deck sudah Penuh atau Meld Kosong");
+      strcpy(errorMessage, "Deck Penuh atau Meld Kosong");
     }
     break;
 
     case 2:
     gotoxy(x,y+8);
     printf("Pilih kartu yang tidak jadi di meld: " );
-    // scanf("%d",&paramA);
     paramA=chooseMeld(player,9,25);
     if(paramA>0){
       getFromMeld(player, paramA-1);
@@ -223,18 +217,11 @@ void option3(playerControl *player, int x, int y)
     else{
       strcpy(errorMessage,"Debug mode on");
     }
-    // if (player->cardLength<PLAYER_CARD_LENGTH && player->meldLength>(paramA-1)) {
-    //   getFromMeld(player, paramA-1);
-    // }
-    // else {
-    //   strcpy(errorMessage, "Deck sudah Penuh atau Meld Kosong");
-    // }
     break;
 
     case 3:
     gotoxy(x,y+8);
     printf("Pilih kartu 1 yang akan ditukar: ");
-    // scanf("%d", &paramA);
     paramA=chooseCard(player,9,31);
     if(paramA<0){
       strcpy(errorMessage, "Debug mode on");
@@ -242,7 +229,6 @@ void option3(playerControl *player, int x, int y)
     else if(paramA>0){
       gotoxy(x,y+9);
       printf("Pilih kartu 2 yang akan ditukar: ");
-      // scanf("%d", &paramB);
       paramB=chooseCard(player,9,31);
       if(paramB<0){
         strcpy(errorMessage, "Debug mode on"); 
@@ -266,6 +252,17 @@ void option3(playerControl *player, int x, int y)
 
     case 6:
     changeTurn();
+    break;
+
+    case 7:
+    if (player->meldLength>=3) {
+      if (sequenceCheck(player->meldCard, player->meldLength) || groupCheck(player->meldCard, player->meldLength)) {
+        pushMeld(player);
+      }
+    }
+    else {
+      strcpy(errorMessage, "Jumlah kartu tidak memennuhi");
+    }
     break;
 
     case -1:
@@ -410,10 +407,8 @@ void printPlayerCard(playerControl *player, int x, int y) {
 
 void printErrorMessage(int x, int y) {
   if(strcmp(errorMessage, "")!=0) {
-    // printf("\n\n");
     gotoxy(x,y);
     puts(errorMessage);
-    // printf("\n\n");
     strcpy(errorMessage, "");
   }
 }
@@ -505,7 +500,6 @@ void printTrashCard(int x, int y) {
         printf("XXXXXX ");
         break;
     }
-    // printf("\n");
   }
   else {
     for(i=0;i<5;i++){
@@ -513,7 +507,6 @@ void printTrashCard(int x, int y) {
       printf("XXXXXX");
       y++;
     }
-    // printf("\n");
   }
 }
 
@@ -618,8 +611,6 @@ int chooseCard(playerControl *player, int x, int y){
   char k;
   do {
     gotoxy((((z%(7*player->cardLength))+(7*player->cardLength))%(7*player->cardLength))+x,y);
-    // gotoxy(z%(7*player->cardLength)+x,y);
-    // printf("%d", (((z%(7*player->cardLength))+(7*player->cardLength))%(7*player->cardLength))+x);
     k=getch();
     if(k==77){
       z+=7;
@@ -630,7 +621,6 @@ int chooseCard(playerControl *player, int x, int y){
       i--;
     }
     else if(k==96){ //debug button (`)
-      // strcpy(errorMessage,"Debug mode on");
       debugMode=1;
       return -1;
     }
@@ -654,7 +644,6 @@ int chooseMeld(playerControl *player, int x, int y){
         i--;
       }
       else if(k==96){ //debug button (`)
-        // strcpy(errorMessage,"Debug mode on");
         debugMode=1;
         return -1;
       }
@@ -662,7 +651,6 @@ int chooseMeld(playerControl *player, int x, int y){
     return ((i%player->meldLength)+player->meldLength)%player->meldLength+1;
   }
   else{
-    // strcpy(errorMessage,"Meld kosong");
     return 0;
   }
 }
