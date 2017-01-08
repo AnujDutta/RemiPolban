@@ -75,16 +75,21 @@ void menuDisplay(int i);
 void WelcomeScreen();
 
 void printPlayerCard(playerControl *player, int x, int y);
+//Menampilkan deck kartu pemain di posisi (x,y)
 
 void printErrorMessage(int x, int y);
+//Menampilkan pesan error di posisi (x,y)
 
 void printMeldCard(playerControl *player, int x, int y);
+//Menampilkan deck kartu meld pemain di posisi (x,y)
 
 void printTrashCard(int x, int y);
+//Menampilkan kartu Trash di posisi (x,y)
 
 void playerCommand(playerControl *player, playerControl *player2);
 
 void getPlayerName();
+//Jendela untuk memasukkan nama pemain
 
 void option1(playerControl *player, int x, int y);
 
@@ -92,21 +97,29 @@ void option2(playerControl *player, int x, int y);
 
 void option3(playerControl *player, int x, int y);
 
-void printClosedCard(playerControl *player, int x, int y);
-
 void gotoxy(int x, int y);
+//Memindahkan kursor ke posisi (x,y)
+
+void printClosedCard(playerControl *player, int x, int y);
+//Menampilkan kartu pemain dengan posisi tertutup di posisi (x,y)
 
 void printClosedDeck(int x, int y);
+//Menampilkan deck dengan posisi tertutup di posisi (x,y)
 
 void printBorder(char color[], int width, int height, int x, int y);
+//Menampilkan bingkai dengan warna, lebar, dan tinggi tertentu dengan posisi (x,y) merupakan sudut kiri atas bingkai
 
 void printPlayerName(playerControl *player, int x, int y);
+//Menampilkan nama pemain di posisi (x,y)
 
 void printPlayerScore(playerControl *player, int x, int y);
+//Menampilkan skor pemain di posisi (x,y)
 
 int chooseCard(playerControl *player, int x, int y);
+//Memilih kartu dari deck kartu pemain
 
 int chooseMeld(playerControl *player, int x, int y);
+//Memilih kartu dari deck meld pemain
 
 // file ai.c
 void copyPlayerCard(playerControl player, int tempBrain[]);
