@@ -104,6 +104,10 @@ void printPlayerName(playerControl *player, int x, int y);
 
 void printPlayerScore(playerControl *player, int x, int y);
 
+int chooseCard(playerControl *player, int x, int y);
+
+int chooseMeld(playerControl *player, int x, int y);
+
 // file ai.c
 void copyPlayerCard(playerControl player, int tempBrain[]);
 //Menyalin seluruh isi yang ada di deck player kedalam array tempBrain

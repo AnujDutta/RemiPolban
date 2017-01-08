@@ -151,7 +151,8 @@ void option2(playerControl *player, int x, int y)
   int paramA;
   gotoxy(x,y);
   printf("Pilih kartu yang akan dibuang: ");
-  scanf("%d",&paramA);
+  // scanf("%d",&paramA);
+  paramA=chooseCard(player,9,31);
   if (paramA<=player->cardLength  && paramA>0) {
     trashCard(player, paramA-1);
   }
@@ -181,7 +182,8 @@ void option3(playerControl *player, int x, int y)
     case 1:
     y++;gotoxy(x,y);
     printf("Pilih kartu yang akan dimeld: ");
-    scanf("%d", &paramA);
+    // scanf("%d", &paramA);
+    paramA=chooseCard(player,9,31);
     if (paramA<=player->cardLength  && paramA>0) {
       insertMeldCard(player, paramA-1);
     }
@@ -193,7 +195,8 @@ void option3(playerControl *player, int x, int y)
     case 2:
     y++;gotoxy(x,y);
     printf("Pilih kartu yang tidak jadi di meld: " );
-    scanf("%d",&paramA);
+    // scanf("%d",&paramA);
+    paramA=chooseMeld(player,9,25);
     if (player->cardLength<PLAYER_CARD_LENGTH && player->meldLength>(paramA-1)) {
       getFromMeld(player, paramA-1);
     }
@@ -205,10 +208,12 @@ void option3(playerControl *player, int x, int y)
     case 3:
     y++;gotoxy(x,y);
     printf("Pilih kartu 1 yang akan ditukar: ");
-    scanf("%d", &paramA);
+    // scanf("%d", &paramA);
+    paramA=chooseCard(player,9,31);
     y++;gotoxy(x,y);
     printf("Pilih kartu 2 yang akan ditukar: ");
-    scanf("%d", &paramB);
+    // scanf("%d", &paramB);
+    paramB=chooseCard(player,9,31);
     if (paramA<=player->cardLength && paramB<=player->cardLength && paramA>0 && paramB>0) {
       swapCard(player->card, paramA-1, paramB-1);
     }
@@ -554,4 +559,42 @@ void printPlayerName(playerControl *player, int x, int y){
 void printPlayerScore(playerControl *player, int x, int y){
   gotoxy(x,y);
   printf("%d", player->score);
+}
+
+int chooseCard(playerControl *player, int x, int y){
+  int i=0,z=0;
+  char k;
+  do {
+    gotoxy((((z%(7*player->cardLength))+(7*player->cardLength))%(7*player->cardLength))+x,y);
+    // gotoxy(z%(7*player->cardLength)+x,y);
+    // printf("%d", (((z%(7*player->cardLength))+(7*player->cardLength))%(7*player->cardLength))+x);
+    k=getch();
+    if(k==77){
+      z+=7;
+      i++;
+    }
+    else if(k==75){
+      z-=7;
+      i--;
+    }
+  }while(k!=13);
+  return ((i%player->cardLength)+player->cardLength)%player->cardLength+1;
+}
+
+int chooseMeld(playerControl *player, int x, int y){
+  int i=0,z=0;
+  char k;
+  do {
+    gotoxy((((z%(7*player->meldLength))+(7*player->meldLength))%(7*player->meldLength))+x,y);
+    k=getch();
+    if(k==77){
+      z+=7;
+      i++;
+    }
+    else if(k==75){
+      z-=7;
+      i--;
+    }
+  }while(k!=13);
+  return ((i%player->meldLength)+player->meldLength)%player->meldLength+1;
 }
