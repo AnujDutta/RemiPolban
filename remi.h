@@ -121,6 +121,9 @@ int chooseCard(playerControl *player, int x, int y);
 int chooseMeld(playerControl *player, int x, int y);
 //Memilih kartu dari deck meld pemain
 
+int chooseOption(int num ,int x, int y);
+//Memilih menu dengan jumlah pilihan num yang terletak di (x,y)
+
 // file ai.c
 void copyPlayerCard(playerControl player, int tempBrain[]);
 //Menyalin seluruh isi yang ada di deck player kedalam array tempBrain
