@@ -21,7 +21,6 @@ void roundInit() {
   emptyMeldDeck(&player1);
   dealFromDeck(&player1);
   player1.melded = 0;
-  player1.status=0;
 
   emptyPlayerDeck(&player2);
   emptyMeldDeck(&player2);
@@ -90,7 +89,7 @@ void sendLog(playerControl player, char log[])
   timeinfo = localtime ( &rawtime );
   strcpy(log2,asctime (timeinfo));
   strtok(log2,"\n");
-  
+
   if((pf=fopen("log.dat","a"))==NULL)
   {
     printf("File log tidak ada");
