@@ -170,7 +170,7 @@ void help()
 }
 
 void cardText(char cardText[], int card) {
-  char value[2];
+  char value[3];
   sprintf(value, "%d", getCardValue(card));
   strcpy(cardText, value);
   switch(getCardSymbol(card)) {
