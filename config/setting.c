@@ -31,4 +31,6 @@ playerControl player1;
 playerControl player2;
 int trashDeck[TRASH_CARD_LENGTH];
 char errorMessage[100]="";
+char logCard[100];
+char logs[100];
 gameControl now;
