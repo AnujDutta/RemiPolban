@@ -2,16 +2,16 @@ void resetDeck() { //Reset deck
   int i;
   deckLengthNow=DECK_CARD_LENGTH;
   for (i=0;i<DECK_CARD_LENGTH;i++) {
-    deck[i]=i+1;
+    deck[i]=i;
   }
 }
 
 int getCardValue(int n) { //Return the card number
-  return n%13;
+  return n%13+1;
 }
 
 char getCardSymbol(int n) { //Return the card symbol
-  switch(n) {
+  switch(n+1) {
     case 1 ... 13 : return HEART; break; //Heart
     case 14 ... 26 : return DIAMOND; break; //Diamond
     case 27 ... 39 : return CLUB; break; //Club
@@ -22,7 +22,6 @@ char getCardSymbol(int n) { //Return the card symbol
 
 char* getCardNumber(int n) {
   switch(n){
-    case 0: return "K "; break;
     case 1: return "A "; break;
     case 2: return "2 "; break;
     case 3: return "3 "; break;
@@ -35,6 +34,7 @@ char* getCardNumber(int n) {
     case 10: return "10"; break;
     case 11: return "J "; break;
     case 12: return "Q "; break;
+    case 13: return "K "; break;
   }
 }
 

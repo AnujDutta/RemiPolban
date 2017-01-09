@@ -29,10 +29,9 @@
 
 int getCardScore(int n){
   switch(n) {
-    case 0: return 10; break;
     case 1: return 15; break;
     case 2 ... 10: return 5; break;
-    case 11 ... 12: return 10; break;
+    case 11 ... 13: return 10; break;
   }
 }
 
