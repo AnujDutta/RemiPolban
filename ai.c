@@ -55,14 +55,20 @@ int searchSequence(int tempBrain[], int length) {
   i=0;
   sortDeckBySymbol(tempBrain, length);
   while (i<length-2 && !ketemu) {
-    for (j=length-i;j>2;j--) {
+    j=length-i;
+    while(j>2 && !ketemu) {
       l=0;
-      for (k=i;k<j;k++) {
+      for (k=i;k<length;k++) {
         tempMeld[l]=tempBrain[k];
         l++;
       }
-      printAICard(tempMeld, j);
-      system("pause");
+      ketemu = sequenceCheck(tempMeld, j);
+      if (ketemu) {
+        ketemu = 1;
+        ketemu = i*10+j;
+        break;
+      }
+      j--;
     }
     i++;
   }
@@ -80,36 +86,37 @@ void startAI(playerControl *player) {
   int length;
   int jadi;
   int i;
-  // if (trashLengthNow==0) {
-  //   getFromDeck(player);
-  // }
-  // else {
+  if (trashLengthNow==0) {
+    getFromDeck(player);
+  }
+  else {
     emptyTempBrain(tempBrain);
     copyPlayerCard(*player, tempBrain);
-  //   tempBrain[player->cardLength]=trashDeck[0]; // get from trashDeck
+    tempBrain[player->cardLength]=trashDeck[0]; // get from trashDeck
     length = player->cardLength;
-    if (searchSequence(tempBrain, length)) {
-      printf("Asu\n");
-      system("pause");
-  //     getFromTrash(player);
+    if (searchSequence(tempBrain, length) || searchSymbol(tempBrain, length)) {
+      getFromTrash(player);
     }
-  //   else {
-  //     getFromDeck(player);
-  //   }
-  // }
-  //
-  // jadi = searchSymbol(player->card, player->cardLength);
-  // if (jadi) {
-  //   for(i=0;i<(jadi%10);i++) {
-  //     insertMeldCard(player, jadi/10);
-  //   }
-  // }
-  //
-  // trashAI(player);
-  //
-  // if (player->meldLength>=3) {
-  //   if (sequenceCheck(player->meldCard, player->meldLength) || groupCheck(player->meldCard, player->meldLength)) {
-  //     pushMeld(player);
-  //   }
-  // }
+    else {
+      getFromDeck(player);
+    }
+  }
+
+  jadi = searchSequence(player->card, player->cardLength);
+  if (!jadi) {
+    jadi = searchSymbol(player->card, player->cardLength);
+  }
+  if (jadi) {
+    for(i=0;i<(jadi%10);i++) {
+      insertMeldCard(player, jadi/10);
+    }
+  }
+
+  trashAI(player);
+
+  if (player->meldLength>=3) {
+    if (sequenceCheck(player->meldCard, player->meldLength) || groupCheck(player->meldCard, player->meldLength)) {
+      pushMeld(player);
+    }
+  }
 }
