@@ -11,12 +11,12 @@ int getCardValue(int n) { //Return the card number
 }
 
 char getCardSymbol(int n) { //Return the card symbol
-  switch(n+1) {
-    case 1 ... 13 : return HEART; break; //Heart
-    case 14 ... 26 : return DIAMOND; break; //Diamond
-    case 27 ... 39 : return CLUB; break; //Club
-    case 40 ... 52 : return SPADE; break; //Spade
-    case 53 ... 54 : return 'R'; break; //Joker
+  switch(n) {
+    case 0 ... 12 : return HEART; break; //Heart
+    case 13 ... 25 : return DIAMOND; break; //Diamond
+    case 26 ... 38 : return CLUB; break; //Club
+    case 39 ... 51 : return SPADE; break; //Spade
+    // case 53 ... 54 : return 'R'; break; //Joker
   }
 }
 
