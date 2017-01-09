@@ -369,13 +369,13 @@ void printPlayerCard(playerControl *player, int x, int y) {
   gotoxy(x,y);
   for (i=0;i<player->cardLength;i++) {
     switch(player->card[i]) {
-      case 1 ... 26:
+      case 0 ... 25:
         printf(BACK_WHT FORE_RED "%s    " RESET " ",getCardNumber(getCardValue(player->card[i])));
         break;
-      case 27 ... 52:
+      case 26 ... 51:
         printf(BACK_WHT FORE_BLC "%s    " RESET " ",getCardNumber(getCardValue(player->card[i])));
         break;
-      case 53 ... 54:
+      case 52 ... 53:
         printf(BACK_WHT FORE_YEL "%c     " RESET " ", getCardSymbol(player->card[i]));
         break;
     }
@@ -391,13 +391,13 @@ void printPlayerCard(playerControl *player, int x, int y) {
   gotoxy(x,y);
   for (i=0;i<player->cardLength;i++) {
     switch(player->card[i]) {
-      case 1 ... 26:
+      case 0 ... 25:
         printf(BACK_WHT FORE_RED "     %c" RESET " ", getCardSymbol(player->card[i]));
         break;
-      case 27 ... 52:
+      case 26 ... 51:
         printf(BACK_WHT FORE_BLC "     %c" RESET " ", getCardSymbol(player->card[i]));
         break;
-      case 53 ... 54:
+      case 52 ... 53:
         printf(BACK_WHT FORE_YEL "     %c" RESET " ", getCardSymbol(player->card[i]));
         break;
     }
@@ -418,13 +418,13 @@ void printMeldCard(playerControl *player, int x, int y) {
   gotoxy(x,y);
   for (i=0;i<player->meldLength;i++) {
     switch(player->meldCard[i]) {
-      case 1 ... 26:
+      case 0 ... 25:
         printf(BACK_WHT FORE_RED "%s    " RESET " ",getCardNumber(getCardValue(player->meldCard[i])));
         break;
-      case 27 ... 52:
+      case 26 ... 51:
         printf(BACK_WHT FORE_BLC "%s    " RESET " ",getCardNumber(getCardValue(player->meldCard[i])));
         break;
-      case 53 ... 54:
+      case 52 ... 53:
         printf(BACK_WHT FORE_YEL "%c     " RESET " ", getCardSymbol(player->meldCard[i]));
         break;
     }
@@ -440,13 +440,13 @@ void printMeldCard(playerControl *player, int x, int y) {
   gotoxy(x,y);
   for (i=0;i<player->meldLength;i++) {
     switch(player->meldCard[i]) {
-      case 1 ... 26:
+      case 0 ... 25:
         printf(BACK_WHT FORE_RED "     %c" RESET " ", getCardSymbol(player->meldCard[i]));
         break;
-      case 27 ... 52:
+      case 26 ... 51:
         printf(BACK_WHT FORE_BLC "     %c" RESET " ", getCardSymbol(player->meldCard[i]));
         break;
-      case 53 ... 54:
+      case 52 ... 53:
         printf(BACK_WHT FORE_YEL "     %c" RESET " ", getCardSymbol(player->meldCard[i]));
         break;
     }
