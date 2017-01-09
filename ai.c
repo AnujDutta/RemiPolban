@@ -79,13 +79,12 @@ void trashAI(playerControl *player) {
   int i;
   int random;
   srand(time(NULL));
-  random = rand() % (player->cardLength-1);
-  strcpy(logs, "Membuang kartu ");
-  cardText(logCard, player->card[random]);
-  strcat(logs, logCard);
-  strcat(logs, " dari deck");
-  sendLog(*player,  logs);
-  trashCard(player, random);
+  // strcpy(logs, "Membuang kartu ");
+  // cardText(logCard, player->card[random]);
+  // strcat(logs, logCard);
+  // strcat(logs, " dari deck");
+  // sendLog(*player,  logs);
+  trashCard(player, rand() % (player->cardLength-1));
 }
 
 void startAI(playerControl *player) {
@@ -94,11 +93,11 @@ void startAI(playerControl *player) {
   int jadi;
   int i;
   if (trashLengthNow==0) {
-    strcpy(logs, "Mengambil kartu ");
-    cardText(logCard, deck[deckLengthNow-1]);
-    strcat(logs, logCard);
-    strcat(logs, " dari deck");
-    sendLog(*player,  logs);
+    // strcpy(logs, "Mengambil kartu ");
+    // cardText(logCard, deck[deckLengthNow-1]);
+    // strcat(logs, logCard);
+    // strcat(logs, " dari deck");
+    // sendLog(*player,  logs);
     getFromDeck(player);
   }
   else {
@@ -107,19 +106,19 @@ void startAI(playerControl *player) {
     tempBrain[player->cardLength]=trashDeck[0]; // get from trashDeck
     length = player->cardLength;
     if (searchSequence(tempBrain, length) || searchSymbol(tempBrain, length)) {
-      strcpy(logs, "Mengambil kartu ");
-      cardText(logCard, trashDeck[0]);
-      strcat(logs, logCard);
-      strcat(logs, " dari trash");
-      sendLog(*player,  logs);
+      // strcpy(logs, "Mengambil kartu ");
+      // cardText(logCard, trashDeck[0]);
+      // strcat(logs, logCard);
+      // strcat(logs, " dari trash");
+      // sendLog(*player,  logs);
       getFromTrash(player);
     }
     else {
-      strcpy(logs, "Mengambil kartu ");
-      cardText(logCard, deck[deckLengthNow-1]);
-      strcat(logs, logCard);
-      strcat(logs, " dari deck");
-      sendLog(*player,  logs);
+      // strcpy(logs, "Mengambil kartu ");
+      // cardText(logCard, deck[deckLengthNow-1]);
+      // strcat(logs, logCard);
+      // strcat(logs, " dari deck");
+      // sendLog(*player,  logs);
       getFromDeck(player);
     }
   }
@@ -130,11 +129,11 @@ void startAI(playerControl *player) {
   }
   if (jadi) {
     for(i=0;i<(jadi%10);i++) {
-      strcpy(logs, "Meld kartu ");
-      cardText(logCard, player->card[jadi/10]);
-      strcat(logs, logCard);
-      strcat(logs, " dari deck");
-      sendLog(*player,  logs);
+      // strcpy(logs, "Meld kartu ");
+      // cardText(logCard, player->card[jadi/10]);
+      // strcat(logs, logCard);
+      // strcat(logs, " dari deck");
+      // sendLog(*player,  logs);
       insertMeldCard(player, jadi/10);
     }
   }
@@ -143,7 +142,7 @@ void startAI(playerControl *player) {
 
   if (player->meldLength>=3) {
     if (sequenceCheck(player->meldCard, player->meldLength) || groupCheck(player->meldCard, player->meldLength)) {
-      sendLog(*player,  "Melakukan Push meld");
+      // sendLog(*player,  "Melakukan Push meld");
       pushMeld(player);
     }
   }

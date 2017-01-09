@@ -7,12 +7,24 @@ void update() {
       if (now.playerNumber == 1)
       {
         gameBoard(&player1,&player2);
-        playerCommand(&player1);
+        if (player1.status==0) {
+          startAI(&player1);
+          now.playerNumber=2;
+        }
+        else {
+          playerCommand(&player1);
+        }
       }
       else if (now.playerNumber == 2)
       {
         gameBoard(&player2,&player1);
-        playerCommand(&player2);
+        if (player2.status==0) {
+          startAI(&player2);
+          now.playerNumber=1;
+        }
+        else {
+          playerCommand(&player2);
+        }
       }
     } while(player1.melded<2 && player2.melded<2 && (player1.cardLength>2 || player1.meldLength!=0) && (player2.cardLength>2 || player2.meldLength!=0) && deckLengthNow!=0);
     gotoxy(83,13);
@@ -86,7 +98,7 @@ void playerCommand(playerControl *player){
     // printf("\n%s's Card : \n", player->playerName);
     // printPlayerCard(player, 0,28);
 
-    
+
     if (debugMode) {
       gotoxy(71,33);
       printf("Type Command : ");
@@ -527,7 +539,7 @@ void getPlayerStatus(){
   int status;
   printf("Player 1's Status : "); scanf("%d",&status);
   player1.status = status;
-  printf("Player 2's Status : "); scanf("%s",&status);
+  printf("Player 2's Status : "); scanf("%d",&status);
   player2.status = status;
 }
 
