@@ -4,7 +4,6 @@
 #include <windows.h>
 #include <time.h>
 #include <string.h>
-#include <conio.h>
 #include "config/setting.c"
 #include "config/characterSpecial.c"
 #include "remi.h"
