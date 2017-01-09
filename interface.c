@@ -445,15 +445,15 @@ void printTrashCard(int x, int y) {
   if (trashLengthNow!=0) {
     gotoxy(x,y);
     switch(trashDeck[0]) {
-      case 1 ... 26:
+      case 0 ... 25:
         printf(BACK_WHT FORE_RED "%s    " RESET " ",getCardNumber(getCardValue(trashDeck[0])));
         break;
-      case 27 ... 52:
+      case 26 ... 51:
         printf(BACK_WHT FORE_BLC "%s    " RESET " ",getCardNumber(getCardValue(trashDeck[0])));
         break;
-      case 53 ... 54:
-        printf(BACK_WHT FORE_YEL "%c     " RESET " ", getCardSymbol(trashDeck[0]));
-        break;
+      // case 53 ... 54:
+      //   printf(BACK_WHT FORE_YEL "%c     " RESET " ", getCardSymbol(trashDeck[0]));
+      //   break;
       default:
         printf("XXXXXX ");
         break;
@@ -462,7 +462,7 @@ void printTrashCard(int x, int y) {
     for(i=0;i<3;i++){
       gotoxy(x,y);
       switch(trashDeck[0]){
-        case 1 ... 54:
+        case 0 ... 51:
           printf(BACK_WHT "      " RESET " ");
           break;
         default:
@@ -473,15 +473,15 @@ void printTrashCard(int x, int y) {
     }
     gotoxy(x,y);
     switch(trashDeck[0]) {
-      case 1 ... 26:
+      case 0 ... 25:
         printf(BACK_WHT FORE_RED "     %c" RESET " ", getCardSymbol(trashDeck[0]));
         break;
-      case 27 ... 52:
+      case 26 ... 51:
         printf(BACK_WHT FORE_BLC "     %c" RESET " ", getCardSymbol(trashDeck[0]));
         break;
-      case 53 ... 54:
-        printf(BACK_WHT FORE_YEL "     %c" RESET " ", getCardSymbol(trashDeck[0]));
-        break;
+      // case 53 ... 54:
+      //   printf(BACK_WHT FORE_YEL "     %c" RESET " ", getCardSymbol(trashDeck[0]));
+      //   break;
       default:
         printf("XXXXXX ");
         break;
