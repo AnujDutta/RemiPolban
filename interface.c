@@ -6,11 +6,13 @@ void update() {
       system("cls");
       if (now.playerNumber == 1)
       {
-        playerCommand(&player1, &player2);
+        gameBoard(&player1,&player2);
+        playerCommand(&player1);
       }
       else if (now.playerNumber == 2)
       {
-        playerCommand(&player2, &player1);
+        gameBoard(&player2,&player1);
+        playerCommand(&player2);
       }
     } while(player1.melded<2 && player2.melded<2 && (player1.cardLength>2 || player1.meldLength!=0) && (player2.cardLength>2 || player2.meldLength!=0) && deckLengthNow!=0);
     gotoxy(83,13);
@@ -38,7 +40,35 @@ void update() {
   system("pause");
 }
 
-void playerCommand(playerControl *player, playerControl *opponent){
+void gameBoard(playerControl *player, playerControl *opponent){
+  printErrorMessage(71,30);
+  printBorder(BACK_CYN,69,37,0,0);
+  printBorder(BACK_CYN,42,19,68,0);
+  printBorder(BACK_CYN,42,19,68,18);
+  printPlayerName(opponent,2,1);
+  printClosedDeck(24,13);
+  gotoxy(26,12);
+  printf("%d", deckLengthNow);
+  printTrashCard(32,13);
+  printMeldCard(player,7,23);
+  printPlayerName(player,2,35);
+  printPlayerCard(player,7,29);
+  gotoxy(71,2);
+  printf("Score :");
+  gotoxy(71,3);
+  printf(" %s\t: %d", player1.playerName, player1.score);
+  gotoxy(71,4);
+  printf(" %s\t: %d", player2.playerName, player2.score);
+
+  if (debugMode) {
+    printPlayerCard(opponent,7,3);
+  }
+  else {
+    printClosedCard(opponent,7,3);
+  }
+}
+
+void playerCommand(playerControl *player){
     char command[100];
 
     // printf("%s's Card : \n", opponent->playerName);
@@ -56,27 +86,8 @@ void playerCommand(playerControl *player, playerControl *opponent){
     // printf("\n%s's Card : \n", player->playerName);
     // printPlayerCard(player, 0,28);
 
-    printErrorMessage(71,30);
-    printBorder(BACK_CYN,69,37,0,0);
-    printBorder(BACK_CYN,42,19,68,0);
-    printBorder(BACK_CYN,42,19,68,18);
-    printPlayerName(opponent,2,1);
-    printClosedDeck(24,13);
-    gotoxy(26,12);
-    printf("%d", deckLengthNow);
-    printTrashCard(32,13);
-    printMeldCard(player,7,23);
-    printPlayerName(player,2,35);
-    printPlayerCard(player,7,29);
-    gotoxy(71,2);
-    printf("Score :");
-    gotoxy(71,3);
-    printf(" %s\t: %d", player1.playerName, player1.score);
-    gotoxy(71,4);
-    printf(" %s\t: %d", player2.playerName, player2.score);
-
+    
     if (debugMode) {
-      printPlayerCard(opponent,7,3);
       gotoxy(71,33);
       printf("Type Command : ");
       scanf("%s", &command);
@@ -84,7 +95,6 @@ void playerCommand(playerControl *player, playerControl *opponent){
     }
     else if (now.turn == 1)
     {
-      printClosedCard(opponent,7,3);
       option1(player,71,19);
       if (strcmp(errorMessage,"")==0) {
         now.turn++ ;
@@ -92,7 +102,6 @@ void playerCommand(playerControl *player, playerControl *opponent){
     }
     else if (now.turn == 2)
     {
-      printClosedCard(opponent,7,3);
       option2(player,71,19);
       if (strcmp(errorMessage,"")==0) {
         now.turn++ ;
@@ -100,7 +109,6 @@ void playerCommand(playerControl *player, playerControl *opponent){
     }
     else if (now.turn == 3)
     {
-      printClosedCard(opponent,7,3);
       option3(player,71,19);
     }
 
@@ -330,40 +338,6 @@ void menuDisplay(int i)
   fclose(fp);
 }
 
-void WelcomeScreen() {
-  int i=1;
-  char k;
-  system("mode 120,35");
-  do{
-    menuDisplay(i);
-    k=getch();
-    if(k==80)
-      i++;
-    else if(k==72)
-      i--;
-    if(k==13)
-      if((i+2)%3==0) {
-        system("cls");
-        StartGame();
-        break;
-      }
-      else {
-        if((i+1)%3==0) {
-          system("cls");
-          HowToPlay();
-          break;
-        }
-        else {
-          if(i%3==0){
-            fflush(stdin);
-            system("exit");
-            break;
-          }
-        }
-      }
-  } while(TRUE);
-}
-
 void printPlayerCard(playerControl *player, int x, int y) {
   int i, j;
   gotoxy(x,y);
@@ -533,7 +507,7 @@ void HowToPlay()
 
     if (back_main == 'y' || back_main == 'Y')
     {
-      WelcomeScreen();
+      // WelcomeScreen();
     }
     else
     {

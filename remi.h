@@ -75,8 +75,6 @@ void StartGame();
 
 void menuDisplay(int i);
 
-void WelcomeScreen();
-
 void printPlayerCard(playerControl *player, int x, int y);
 //Menampilkan deck kartu pemain di posisi (x,y)
 
@@ -89,7 +87,9 @@ void printMeldCard(playerControl *player, int x, int y);
 void printTrashCard(int x, int y);
 //Menampilkan kartu Trash di posisi (x,y)
 
-void playerCommand(playerControl *player, playerControl *player2);
+void gameBoard(playerControl *player, playerControl *opponent);
+
+void playerCommand(playerControl *player);
 
 void getPlayerName();
 //Jendela untuk memasukkan nama pemain

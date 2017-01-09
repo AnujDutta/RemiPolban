@@ -46,4 +46,5 @@ int main() {
       system("exit");
     }
   }
+  return 0;
 }
