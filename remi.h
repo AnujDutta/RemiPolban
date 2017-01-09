@@ -94,6 +94,9 @@ void playerCommand(playerControl *player, playerControl *player2);
 void getPlayerName();
 //Jendela untuk memasukkan nama pemain
 
+void getPlayerStatus();
+//Jendela untuk memasukkan status pemain
+
 void option1(playerControl *player, int x, int y);
 
 void option2(playerControl *player, int x, int y);

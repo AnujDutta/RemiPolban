@@ -147,7 +147,7 @@ void option1(playerControl *player, int x, int y)
     break;
     case -1:
     debugMode=1;strcpy(errorMessage,"Debug mode on");
-    break;    
+    break;
     default:
     strcpy(errorMessage, "Input Salah");
     break;
@@ -231,7 +231,7 @@ void option3(playerControl *player, int x, int y)
       printf("Pilih kartu 2 yang akan ditukar: ");
       paramB=chooseCard(player,9,31);
       if(paramB<0){
-        strcpy(errorMessage, "Debug mode on"); 
+        strcpy(errorMessage, "Debug mode on");
       }
       else if (paramA<=player->cardLength && paramB<=player->cardLength) {
         swapCard(player->card, paramA-1, paramB-1);
@@ -516,17 +516,17 @@ void HowToPlay()
   char string [125];
   FILE *f;
   int line;
-  
+
   system ("cls");
   f = fopen ("HowToPlay.txt", "r");
   for (line=0; line<=8; line++){
-  
+
 	fgets(string,125, (FILE*)f);
 	printf("%s",string);
 }
-  
+
     fclose (f);
-    
+
 	printf("\nBack To Main menu? (Y/T) ");
     fflush(stdin);
     back_main = getchar();
@@ -549,9 +549,17 @@ void getPlayerName(){
   setPlayerName(&player2, name);
 }
 
-void gotoxy(int x, int y){ 
-  COORD coord={x,y}; 
-  SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord); 
+void getPlayerStatus(){
+  int status;
+  printf("Player 1's Status : "); scanf("%d",&status);
+  player1.status = status;
+  printf("Player 2's Status : "); scanf("%s",&status);
+  player2.status = status;
+}
+
+void gotoxy(int x, int y){
+  COORD coord={x,y};
+  SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
 
 void printClosedCard(playerControl *player, int x, int y){
@@ -592,7 +600,7 @@ void printBorder(char color[], int width, int height, int x, int y){
   gotoxy(x,y);
   for(i=0;i<width;i++){
     printf("%s ",color);
-  }  
+  }
   printf(RESET);
 }
 

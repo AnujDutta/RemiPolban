@@ -7,6 +7,7 @@ void gameInit() {
   setPlayerScore(&player1, 0);
   setPlayerScore(&player2, 0);
   getPlayerName();
+  getPlayerStatus();
 
   roundInit();
 }
