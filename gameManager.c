@@ -80,6 +80,7 @@ void changeTurn() {
 
 void sendLog(playerControl player, char log[])
 {
+  char log2[100];
   time_t rawtime;
   struct tm * timeinfo;
   // int i;
@@ -87,7 +88,9 @@ void sendLog(playerControl player, char log[])
 
   time ( &rawtime );
   timeinfo = localtime ( &rawtime );
-
+  strcpy(log2,asctime (timeinfo));
+  strtok(log2,"\n");
+  
   if((pf=fopen("log.dat","a"))==NULL)
   {
     printf("File log tidak ada");
@@ -95,7 +98,7 @@ void sendLog(playerControl player, char log[])
   }
   else
   {
-    fprintf(pf,"%s .. %s %s pada turn ke %d\n",asctime (timeinfo), player.playerName, log, now.turn);
+    fprintf(pf,"%s %s %s pada turn ke %d\n",log2, player.playerName, log, now.turn);
   }
   fclose(pf);
 }
