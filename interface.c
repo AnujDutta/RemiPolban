@@ -400,7 +400,7 @@ void printPlayerCard(playerControl *player, int x, int y) {
           break;
         // case 53 ... 54:
         //   printf(BACK_WHT FORE_YEL "     %c" RESET " ", getCardSymbol(player->card[i]));
-          break;
+          // break;
       }
     }
   // printf("\n");
@@ -429,7 +429,7 @@ void printMeldCard(playerControl *player, int x, int y) {
           break;
         // case 53 ... 54:
         //   printf(BACK_WHT FORE_YEL "%c     " RESET " ", getCardSymbol(player->meldCard[i]));
-          break;
+          // break;
       }
     }
     y++;
