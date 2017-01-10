@@ -29,12 +29,15 @@ void update() {
     } while(player1.melded<2 && player2.melded<2 && (player1.cardLength>2 || player1.meldLength!=0) && (player2.cardLength>2 || player2.meldLength!=0) && deckLengthNow!=0);
     gotoxy(83,13);
     if (player1.score>player2.score) {
+      sendLog(player1,  "Memenangkan Pertempuran Sementara");
       printf("Player 1 Win");
     }
     else if (player1.score==player2.score){
+      sendLog(player1,  "dan Player 2 Sementara Seri");
       printf("Player Draw");
     }
     else {
+      sendLog(player2,  "Memenangkan Pertempuran Sementara");
       printf("Player 2 Win");
     }
     gotoxy(73,14);
@@ -43,9 +46,11 @@ void update() {
   } while(player1.score<WIN_SCORE && player2.score<WIN_SCORE);
   gotoxy(83,13);
   if (player1.score>=WIN_SCORE) {
+    sendLog(player1,  "Memenangkan Pertempuran Akhir");
     printf("Player 1 Win");
   }
   else {
+    sendLog(player2,  "Memenangkan Pertempuran Akhir");
     printf("Player 2 Win");
   }
   gotoxy(73,14);
@@ -281,7 +286,7 @@ void option3(playerControl *player, int x, int y)
       }
     }
     else {
-      strcpy(errorMessage, "Jumlah kartu tidak memennuhi");
+      strcpy(errorMessage, "Jumlah kartu tidak memenuhi");
     }
     break;
 

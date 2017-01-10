@@ -144,7 +144,7 @@ void startAI(playerControl *player) {
   trashAI(player);
 
   if (player->meldLength>=3) {
-    if (sequenceCheck(player->meldCard, player->meldLength) || groupCheck(player->meldCard, player->meldLength)) {
+    if (player->meldLength > 0) {
       sendLog(*player,  "Melakukan Push meld");
       pushMeld(player);
     }

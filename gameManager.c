@@ -9,6 +9,9 @@ void gameInit() {
   getPlayerName();
   getPlayerStatus();
 
+  FILE *pf;
+  pf=fopen("log.dat","w");
+  fclose(pf);
   roundInit();
 }
 
@@ -97,7 +100,7 @@ void sendLog(playerControl player, char log[])
   }
   else
   {
-    fprintf(pf,"%s %s %s pada turn ke %d\n",log2, player.playerName, log, now.turn);
+    fprintf(pf,"%s %s %s\n",log2, player.playerName, log);
   }
   fclose(pf);
 }
