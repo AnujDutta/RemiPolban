@@ -79,7 +79,7 @@ void trashCard(playerControl *player, int n) {
 
 void getFromTrash(playerControl *player) {
   player->card[player->cardLength]=trashDeck[0];
-  trashDeck[0]=0;
+  trashDeck[0]=-1;
   player->cardLength+=1;
   trashLengthNow--;
 }
@@ -170,6 +170,6 @@ void pushMeld(playerControl *player) {
 }
 
 void emptyTrash(){
-  trashDeck[0]=0;
+  trashDeck[0]=-1;
   trashLengthNow=0;
 }
