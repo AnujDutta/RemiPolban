@@ -1,60 +1,28 @@
 void update() {
   int i, choose, player;
-
-  do {
-    do {
-      system("cls");
-      if (now.playerNumber == 1)
-      {
-        gameBoard(&player1,&player2);
-        if (player1.status==0) {
-          startAI(&player1);
-          now.playerNumber=2;
-        }
-        else {
-          playerCommand(&player1);
-        }
-      }
-      else if (now.playerNumber == 2)
-      {
-        gameBoard(&player2,&player1);
-        if (player2.status==0) {
-          startAI(&player2);
-          now.playerNumber=1;
-        }
-        else {
-          playerCommand(&player2);
-        }
-      }
-    } while(player1.melded<2 && player2.melded<2 && (player1.cardLength>2 || player1.meldLength!=0) && (player2.cardLength>2 || player2.meldLength!=0) && deckLengthNow!=0);
-    gotoxy(83,13);
-    if (player1.score>player2.score) {
-      sendLog(player1,  "Memenangkan Pertempuran Sementara");
-      printf("Player 1 Win");
-    }
-    else if (player1.score==player2.score){
-      sendLog(player1,  "dan Player 2 Sementara Seri");
-      printf("Player Draw");
+  system("cls");
+  if (now.playerNumber == 1)
+  {
+    gameBoard(&player1,&player2);
+    if (player1.status==0) {
+      startAI(&player1);
+      now.playerNumber=2;
     }
     else {
-      sendLog(player2,  "Memenangkan Pertempuran Sementara");
-      printf("Player 2 Win");
+      playerCommand(&player1);
     }
-    gotoxy(73,14);
-    system("pause");
-    roundInit();
-  } while(player1.score<WIN_SCORE && player2.score<WIN_SCORE);
-  gotoxy(83,13);
-  if (player1.score>=WIN_SCORE) {
-    sendLog(player1,  "Memenangkan Pertempuran Akhir");
-    printf("Player 1 Win");
   }
-  else {
-    sendLog(player2,  "Memenangkan Pertempuran Akhir");
-    printf("Player 2 Win");
+  else if (now.playerNumber == 2)
+  {
+    gameBoard(&player2,&player1);
+    if (player2.status==0) {
+      startAI(&player2);
+      now.playerNumber=1;
+    }
+    else {
+      playerCommand(&player2);
+    }
   }
-  gotoxy(73,14);
-  system("pause");
 }
 
 void gameBoard(playerControl *player, playerControl *opponent){
@@ -304,15 +272,38 @@ void StartGame() // pindahan dari main
 {
   system("mode 111,37");
   gameInit();
-  // do {
-  //   do {
+  do {
+    do {
       update();
-  //   } while (deckLengthNow!=0 && player1.melded<2 && player2.melded<2);
-  //   printf("Round End\n");
-  //   system("pause");
-  //   roundInit();
-  // } while (player1.score < WIN_SCORE && player2.score < WIN_SCORE);
-  printf("Game End\n");
+    }while(player1.melded<2 && player2.melded<2 && (player1.cardLength>2 || player1.meldLength!=0) && (player2.cardLength>2 || player2.meldLength!=0) && deckLengthNow!=0);
+    gotoxy(83,13);
+    if (player1.score>player2.score) {
+      sendLog(player1,  "Memenangkan Pertempuran Sementara");
+      printf("Player 1 Win");
+    }
+    else if (player1.score==player2.score){
+      sendLog(player1,  "dan Player 2 Sementara Seri");
+      printf("Player Draw");
+    }
+    else {
+      sendLog(player2,  "Memenangkan Pertempuran Sementara");
+      printf("Player 2 Win");
+    }
+    gotoxy(73,14);
+    system("pause");
+    roundInit();
+  } while(player1.score<WIN_SCORE && player2.score<WIN_SCORE);
+  gotoxy(83,13);
+  if (player1.score>=WIN_SCORE) {
+    sendLog(player1,  "Memenangkan Pertempuran Akhir");
+    printf("Player 1 Win");
+  }
+  else {
+    sendLog(player2,  "Memenangkan Pertempuran Akhir");
+    printf("Player 2 Win");
+  }
+  gotoxy(73,14);
+  system("pause");
 }
 
 void menuDisplay(int i)

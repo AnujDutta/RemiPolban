@@ -1,0 +1,2 @@
+C:\Users\syamcode\AppData\Local\Temp/ccgubAwB.o:ca.c:(.text+0x2c): undefined reference to `hai'
+collect2: ld returned 1 exit status
