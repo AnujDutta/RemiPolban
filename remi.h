@@ -2,6 +2,7 @@
 #define REMI_H
 
 //file card.c
+//Nama Pembuat : Muhamad Hisyam Anshory
 
 void resetDeck();
 //Mengubah jumlah kartu di deck ke asal dan mengisi kartu yang ada secara berurutan
@@ -67,13 +68,19 @@ void emptyTrash();
 //Mengosongkan Trash
 
 //file interface.c
+//Nama Pembuat : Fahmi Rosdiansyah dan Rizka Fajar
+
 void update();
+//Prosedur untuk mengatur proses setiap giliran saat permainan
 
 void HowToPlay();
+//Prosedur untuk menampilkan cara bermain
 
 void StartGame();
+//Prosedur untuk mengatur proses saat permainan
 
 void menuDisplay(int i);
+//Prosedur untuk menampilkan menu utama
 
 void printPlayerCard(playerControl *player, int x, int y);
 //Menampilkan deck kartu pemain di posisi (x,y)
@@ -131,6 +138,8 @@ int chooseOption(int num ,int x, int y);
 //Memilih menu dengan jumlah pilihan num yang terletak di (x,y)
 
 // file ai.c
+//Nama Pembuat : Muhamad Hisyam Anshory
+
 void copyPlayerCard(playerControl player, int tempBrain[]);
 //Menyalin seluruh isi yang ada di deck player kedalam array tempBrain
 
@@ -153,18 +162,53 @@ void startAI(playerControl *player);
 //Prosedur untuk memulai perintah yang ada pada AI
 
 // file score.c
-int getCardScore(int n);
+//Nama Pembuat : Fahmi Rosdiansyah
 
-int deckScore(int card[], int length);
+int getCardScore(int n);
+//Untuk mendapatkan score dari tiap kartu
 
 // file gameManager.c
+//Nama Pembuat : Achmad Fadhitia
 
-void sendLog(playerControl player, char log[]);
+void gameInit();
+//Prosedur yang akan memanggil modul lain saat awal permainan
 
-// file command.c
+void roundInit();
+//Prosedur yang akan memanggil modul lain saat awal ronde
 
-void help();
+void setPlayerScore(playerControl *player, int x);
+//Prosedur untuk mengisi nilai score pemain sebesear x
+
+void setPlayerName(playerControl *player, char name[]);
+//Prosedur untuk mengisi nama pemain
+
+int groupCheck(int card[], int length);
+//Fungsi untuk mengecek apakah kartu yang ada di dalam deck memenuhi syarat "Group", akan mengembalikan nilai 0 jika false
+//dan akan mengembalikan nilai 1 jika ditemukan
+
+int sequenceCheck(int card[], int length);
+//Fungsi untuk mengecek apakah kartu yang ada di dalam deck memenuhi syarat "Sequence", akan mengembalikan nilai 0 jika false
+//dan akan mengembalikan nilai 1 jika ditemukan
+
+void changeTurn();
+//Prosedur untuk mengubah giliran pemain dalam permainan
 
 void cardText(char cardText[], int card);
+//Untuk mendapatkan symbol dari kartu yang akan dikirimkan ke log
+
+void sendLog(playerControl player, char log[]);
+//Prosedur untuk mengitimkan catatan permainan kedalam file log.dat
+
+// file command.c
+//Nama Pembuat : Achmad Fadhitia
+
+void commands(playerControl *player, char command[]);
+//Memanggil modul sesuai dengna perintah yang dipanggil, digunakan saat debug mode
+
+void help();
+//Menampilkan cara menggunakan debug mode
+
+void cardText(char cardText[], int card);
+//Prosedur untuk
 
 #endif

@@ -1,8 +1,3 @@
-void gameInit();
-void roundInit();
-void setPlayerScore(playerControl *player, int x);
-void setPlayerName(playerControl *player, char name[]);
-
 void gameInit() {
   setPlayerScore(&player1, 0);
   setPlayerScore(&player2, 0);
@@ -42,9 +37,10 @@ void setPlayerName(playerControl *player, char name[]) {
   strcpy(player->playerName, name);
 }
 
-void setDifficulty(int n){
-  now.difficulty=n;
-}
+//Difficulty untuk AI (Belum beres)
+// void setDifficulty(int n){
+//   now.difficulty=n;
+// }
 
 int groupCheck(int card[], int length) {
   int i=0, status;
@@ -77,6 +73,26 @@ void changeTurn() {
   else if (now.playerNumber==2) {
     now.playerNumber = 1;
     now.turn = 1;
+  }
+}
+
+void minScore(playerControl *player) {
+  int i;
+  for(i=player->cardLength;i>0;i--) {
+    player->score-=getCardScore(getCardValue(player->card[0]));
+    trashCard(player, 0);
+  }
+}
+
+void cardText(char cardText[], int card) {
+  char value[3];
+  sprintf(value, "%d", getCardValue(card));
+  strcpy(cardText, value);
+  switch(getCardSymbol(card)) {
+    case HEART : strcat(cardText, " Heart");break;
+    case DIAMOND : strcat(cardText, " Diamond");break;
+    case CLUB : strcat(cardText, " Club");break;
+    case SPADE : strcat(cardText, " Spade");break;
   }
 }
 

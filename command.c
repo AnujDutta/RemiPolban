@@ -168,15 +168,3 @@ void help()
     );
   system("pause");
 }
-
-void cardText(char cardText[], int card) {
-  char value[3];
-  sprintf(value, "%d", getCardValue(card));
-  strcpy(cardText, value);
-  switch(getCardSymbol(card)) {
-    case HEART : strcat(cardText, " Heart");break;
-    case DIAMOND : strcat(cardText, " Diamond");break;
-    case CLUB : strcat(cardText, " Club");break;
-    case SPADE : strcat(cardText, " Spade");break;
-  }
-}

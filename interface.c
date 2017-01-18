@@ -276,6 +276,8 @@ void StartGame() // pindahan dari main
     do {
       update();
     }while(player1.melded<2 && player2.melded<2 && (player1.cardLength>2 || player1.meldLength!=0) && (player2.cardLength>2 || player2.meldLength!=0) && deckLengthNow!=0);
+    minScore(&player1);
+    minScore(&player2);
     gotoxy(83,13);
     if (player1.score>player2.score) {
       sendLog(player1,  "Memenangkan Pertempuran Sementara");
@@ -533,9 +535,9 @@ void getPlayerName(){
 
 void getPlayerStatus(){
   int status;
-  printf("Player 1's Status : "); scanf("%d",&status);
+  printf("Player 1's Status : (0 untuk komputer, 1 untuk pemain) "); scanf("%d",&status);
   player1.status = status;
-  printf("Player 2's Status : "); scanf("%d",&status);
+  printf("Player 2's Status : (0 untuk komputer, 1 untuk pemain)"); scanf("%d",&status);
   player2.status = status;
 }
 
