@@ -1,4 +1,4 @@
-# Pulban Rummy Card Game #
+# Polban Rummy Card Game #
 Tugas Besar Dasar Dasar Pemrograman Semester 1 D3-Teknik Informatika Politeknik Negeri Bandung.
 ## Anggota
 - [@afadhitya](https://github.com/afadhitya) (Achmad Fadhitya Muharram)
